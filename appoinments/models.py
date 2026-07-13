@@ -26,7 +26,7 @@ class Application(models.Model):
         CANCELED = "canceled", "Отменена"
 
     user = models.ForeignKey(
-        "users.User", on_delete=models.PROTECT, related_name="applications"
+        "users.User", on_delete=models.PROTECT, related_name="applications", blank=True, null=True,
     )
 
   
@@ -50,6 +50,8 @@ class Application(models.Model):
     )
 
     comment = models.TextField(blank=True)
+    client_name = models.CharField(max_length=100)
+    client_phone = models.CharField(max_length=20)
 
     def __str__(self):
         return (

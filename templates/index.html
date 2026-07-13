@@ -1,17 +1,128 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 Diamant Studio
 {% endblock %}
 
+
 {% block content %}
-<h1>Добро пожаловать в Diamant Studio</h1>
 
-<p>Салон красоты в Гродно.</p>
+<div class="bg-light rounded-4 p-5 text-center">
 
-<ul>
-    <li><a href="/services/">Услуги</a></li>
-    <li><a href="/masters/">Мастера</a></li>
-    <li><a href="/application/">Запись</a></li>
-</ul>
+    <h1 class="display-3 fw-bold">
+        💎 Diamant Studio
+    </h1>
+
+    <p class="lead">
+        Салон красоты в Гродно
+    </p>
+
+    <p class="mb-4">
+        Красота начинается с заботы о себе.
+        Наши мастера помогут создать идеальный образ,
+        используя современные техники и профессиональные материалы.
+    </p>
+
+    <img
+        src="{% static 'images/salon.jpg' %}"
+        class="img-fluid rounded my-4"
+        alt="Diamant Studio"
+    >
+
+    <br>
+
+    <a href="/appointment/" class="btn btn-primary btn-lg">
+        Записаться онлайн
+    </a>
+
+</div>
+
+
+<hr class="my-5">
+
+
+<h2 class="text-center mb-4">
+    Почему выбирают нас?
+</h2>
+
+
+<div class="row g-4">
+
+
+    <div class="col-md-4">
+
+        <div class="card h-100 shadow-sm">
+
+            <div class="card-body text-center">
+
+                <h3>⭐</h3>
+
+                <h5>
+                    Опытные мастера
+                </h5>
+
+                <p>
+                    Наши специалисты регулярно повышают квалификацию
+                    и используют современные техники работы.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-4">
+
+        <div class="card h-100 shadow-sm">
+
+            <div class="card-body text-center">
+
+                <h3>💎</h3>
+
+                <h5>
+                    Профессиональная косметика
+                </h5>
+
+                <p>
+                    Используем только качественные материалы
+                    от проверенных производителей.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-4">
+
+        <div class="card h-100 shadow-sm">
+
+            <div class="card-body text-center">
+
+                <h3>📅</h3>
+
+                <h5>
+                    Онлайн-запись
+                </h5>
+
+                <p>
+                    Запишитесь на удобное время через сайт
+                    или Telegram-бот.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
 {% endblock %}
