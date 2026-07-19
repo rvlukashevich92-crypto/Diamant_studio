@@ -5,9 +5,9 @@
 Diamant Studio
 {% endblock %}
 
-
 {% block content %}
 
+<!-- Hero-блок -->
 <div class="bg-light rounded-4 p-5 text-center">
 
     <h1 class="display-3 fw-bold">
@@ -38,81 +38,83 @@ Diamant Studio
 
 </div>
 
-
+<!-- Преимущества -->
 <hr class="my-5">
-
 
 <h2 class="text-center mb-4">
     Почему выбирают нас?
 </h2>
 
-
 <div class="row g-4">
 
-
     <div class="col-md-4">
-
         <div class="card h-100 shadow-sm">
-
             <div class="card-body text-center">
-
                 <h3>⭐</h3>
-
-                <h5>
-                    Опытные мастера
-                </h5>
-
+                <h5>Опытные мастера</h5>
                 <p>
                     Наши специалисты регулярно повышают квалификацию
                     и используют современные техники работы.
                 </p>
-
             </div>
-
         </div>
-
     </div>
 
-
     <div class="col-md-4">
-
         <div class="card h-100 shadow-sm">
-
             <div class="card-body text-center">
-
                 <h3>💎</h3>
-
-                <h5>
-                    Профессиональная косметика
-                </h5>
-
+                <h5>Профессиональная косметика</h5>
                 <p>
                     Используем только качественные материалы
                     от проверенных производителей.
                 </p>
-
             </div>
-
         </div>
-
     </div>
 
-
     <div class="col-md-4">
-
         <div class="card h-100 shadow-sm">
-
             <div class="card-body text-center">
-
                 <h3>📅</h3>
-
-                <h5>
-                    Онлайн-запись
-                </h5>
-
+                <h5>Онлайн-запись</h5>
                 <p>
                     Запишитесь на удобное время через сайт
                     или Telegram-бот.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Услуги -->
+<hr class="my-5">
+
+<h2 class="text-center mb-4">
+    Наши услуги
+</h2>
+
+<div class="row g-4">
+
+    {% for service in services %}
+
+    <div class="col-md-4">
+
+        <div class="card h-100 shadow">
+
+            <div class="card-body">
+
+                <h4>{{ service.name }}</h4>
+
+                <p>
+                    <strong>Цена:</strong>
+                    {{ service.price }} BYN
+                </p>
+
+                <p>
+                    <strong>Длительность:</strong>
+                    {{ service.duration }}
                 </p>
 
             </div>
@@ -121,8 +123,66 @@ Diamant Studio
 
     </div>
 
+    {% empty %}
+
+    <p class="text-center">
+        Пока услуги отсутствуют.
+    </p>
+
+    {% endfor %}
 
 </div>
 
+<!-- Мастера -->
+<hr class="my-5">
+
+<h2 class="text-center mb-4">
+    Наши мастера
+</h2>
+
+<div class="row g-4">
+
+    {% for master in masters %}
+
+    <div class="col-md-4">
+
+        <div class="card h-100 shadow">
+
+            {% if master.photo %}
+            <img
+                src="{{ master.photo.url }}"
+                class="card-img-top"
+                alt="{{ master.name }}"
+                style="height:300px; object-fit:cover;"
+            >
+            {% endif %}
+
+            <div class="card-body">
+
+                <h4>{{ master.name }}</h4>
+
+                <p class="text-muted">
+                    {{ master.specialization }}
+                </p>
+
+                <p>
+                    {{ master.about_master|truncatechars:120 }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <p class="text-center">
+        Пока нет доступных мастеров.
+    </p>
+
+    {% endfor %}
+
+</div>
 
 {% endblock %}

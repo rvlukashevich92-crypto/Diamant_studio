@@ -10,6 +10,22 @@
 
     {% block styles %}{% endblock %}
 </head>
+
+{% if messages %}
+
+<div class="container mt-3">
+
+    {% for message in messages %}
+
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -61,4 +77,5 @@
 {% endblock %}
 
 </body>
+
 </html>

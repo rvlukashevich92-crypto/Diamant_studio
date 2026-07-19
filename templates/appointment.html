@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 Онлайн-запись
@@ -6,17 +7,190 @@
 
 {% block content %}
 
-<h1>Онлайн-запись</h1>
+<div class="container py-5">
 
-<form method="post">
-    {% csrf_token %}
+    <div class="row justify-content-center">
 
-    {{ form.as_p }}
+        <div class="col-lg-8">
 
-    <button type="submit">
-        Записаться
-    </button>
+            <div class="card shadow">
 
-</form>
+                <div class="card-header bg-primary text-white">
+
+                    <h2 class="mb-0">
+                        Онлайн-запись
+                    </h2>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-4">
+                        Заполните форму, и мы свяжемся с вами для подтверждения записи.
+                    </p>
+
+                    <form method="post">
+
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Мастер
+                            </label>
+
+                            {{ form.master }}
+
+                            {% if form.master.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.master.errors }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Услуга
+                            </label>
+
+                            {{ form.service }}
+
+                            {% if form.service.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.service.errors }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Дата
+                                </label>
+
+                                {{ form.appointment_date }}
+
+                                {% if form.appointment_date.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.appointment_date.errors }}
+                                    </div>
+                                {% endif %}
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Время
+                                </label>
+
+                                {{ form.appointment_time }}
+
+                                {% if form.appointment_time.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.appointment_time.errors }}
+                                    </div>
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Пол
+                            </label>
+
+                            {{ form.gender }}
+
+                            {% if form.gender.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.gender.errors }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Ваше имя
+                            </label>
+
+                            {{ form.client_name }}
+
+                            {% if form.client_name.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.client_name.errors }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Телефон
+                            </label>
+
+                            {{ form.client_phone }}
+
+                            {% if form.client_phone.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.client_phone.errors }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Комментарий
+                            </label>
+
+                            {{ form.comment }}
+
+                            {% if form.comment.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.comment.errors }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary btn-lg w-100">
+
+                            Записаться
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="{% static 'js/appointment.js' %}"></script>
+
 
 {% endblock %}

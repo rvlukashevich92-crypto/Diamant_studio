@@ -13,6 +13,15 @@ class Master(models.Model):
     photo = models.ImageField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
 
+    services = models.ManyToManyField(
+        "services.Service",
+        related_name="master",
+        verbose_name="Услуги",
+        blank=True,
+    )
+    work_start = models.TimeField(default="08:00")
+    work_end = models.TimeField(default="20:00")
+
     def __str__(self):
         return self.name
 
