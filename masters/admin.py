@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Master
+from .models import Master, MasterPortFolioImage
+
+class MasterPortfolioImageInline(admin.TabularInline):
+    model = MasterPortFolioImage
+    extra = 3
 
 @admin.register(Master)
 class MasterAdmin(admin.ModelAdmin):
@@ -21,3 +25,9 @@ class MasterAdmin(admin.ModelAdmin):
     ordering = (
         "name",
     )
+
+    filter_horizontal = ('services',) 
+
+    inlines = [MasterPortfolioImageInline]
+
+    admin.site.register(MasterPortFolioImage)   

@@ -1,110 +1,123 @@
-const master = document.getElementById("master");
-const service = document.getElementById("service");
-const date = document.getElementById("appointment_date");
-const time = document.getElementById("appointment_time");
+console.log("appointment.js загружен");
 
-async function loadSlots() {
+// Находим элементы формы по точным ID, которые вы указали в widgets формы Django
+const master = document.getElementById("id_master") || document.getElementById("master");
+const service = document.getElementById("id_service") || document.getElementById("service");
+const date = document.getElementById("id_appointment_date") || document.getElementById("id_date") || document.getElementById("appointment_date");
+const time = document.getElementById("id_appointment_time") || document.getElementById("id_time") || document.getElementById("appointment_time");
 
-    if (
-        !master.value ||
-        !service.value ||
-        !date.value
-    ) {
-        return;
+console.log("Найденные элементы формы:", { master, service, date, time });
+
+// Читаем параметры из URL-строки браузера (?service_id=... или ?master_id=...)
+const urlParams = new URLSearchParams(window.location.search);
+const urlServiceId = urlParams.get('service_id') || urlParams.get('service');
+const urlMasterId = urlParams.get('master_id') || urlParams.get('master');
+
+// =========================
+// Динамическая фильтрация услуг
+// =========================
+async function loadServices() {
+    if (!service) return;
+    
+    console.log("loadServices вызвана. Текущий мастер ID:", master ? master.value : "нет");
+
+    // Приоритет выбора услуги: текущее значение в поле или значение из URL
+    const targetServiceId = service.value || urlServiceId;
+
+    service.innerHTML = "";
+
+    const emptyOption = document.createElement("option");
+    emptyOption.value = "";
+    emptyOption.textContent = "---------";
+    service.appendChild(emptyOption);
+
+    // Строим URL запроса услуг
+    let fetchUrl = '/appointment/master-services/';
+    const currentMasterId = (master ? master.value : "") || urlMasterId;
+    if (currentMasterId) {
+        fetchUrl += `?master=${currentMasterId}`;
     }
 
-    const response = await fetch(
-        `/appointment/available-slots/?master=${master.value}&service=${service.value}&date=${date.value}`
-    );
+    try {
+        const response = await fetch(fetchUrl);
+        const services = await response.json();
+        console.log("Загруженные услуги с бэкенда:", services);
 
-    const slots = await response.json();
+        services.forEach(item => {
+            const option = document.createElement("option");
+            option.value = item.id;
+            option.textContent = item.name;
+
+            // Если ID совпадает с целевым, делаем элемент выбранным
+            if (item.id == targetServiceId) {
+                option.selected = true;
+                console.log(`Услуга ID ${item.id} успешно выбрана!`);
+            }
+
+            service.appendChild(option);
+        });
+    } catch (error) {
+        console.error("Ошибка при загрузке услуг:", error);
+    }
+
+    // После обновления списка услуг всегда обновляем доступное время
+    loadSlots();
+}
+
+// =========================
+// Загрузка свободного времени
+// =========================
+async function loadSlots() {
+    if (!time || !master || !service || !date) return;
 
     time.innerHTML = "";
 
-    slots.forEach(slot => {
-
-        const option = document.createElement("option");
-
-        option.value = slot;
-        option.textContent = slot;
-
-        time.appendChild(option);
-
-    });
-
-}
-
-master.addEventListener("change", loadSlots);
-service.addEventListener("change", loadSlots);
-date.addEventListener("change", loadSlots);
-
-document.addEventListener('DOMContentLoaded', () => {
-    const apiServicesUrl = '/api/master-services/'; 
-    const masterSelect = document.getElementById('id_master');     
-    const servicesSelect = document.getElementById('id_services'); 
-
-    if (!masterSelect || !servicesSelect) return;
-
-    const checkboxContainer = document.createElement('div');
-    checkboxContainer.id = 'services-checkbox-list';
-    checkboxContainer.style.marginTop = '10px';
-    
-    servicesSelect.style.display = 'none';
-    servicesSelect.parentNode.insertBefore(checkboxContainer, servicesSelect.nextSibling);
-
-    function updateServices(masterId) {
-        if (!masterId) {
-            checkboxContainer.innerHTML = '<p style="color: #666; font-size: 0.9em;">Сначала выберите мастера</p>';
-            return;
-        }
-
-        checkboxContainer.innerHTML = '<em>Загрузка доступных услуг...</em>';
-
-        fetch(`${apiServicesUrl}?master=${masterId}`)
-            .then(response => {
-                if (!response.ok) throw new Error();
-                return response.json();
-            })
-            .then(services => {
-                checkboxContainer.innerHTML = ''; 
-
-                if (services.length === 0) {
-                    checkboxContainer.innerHTML = '<p style="color: #dd4b39; font-size: 0.9em;">У этого мастера нет доступных услуг</p>';
-                    return;
-                }
-
-                services.forEach(service => {
-                    const label = document.createElement('label');
-                    label.style.display = 'block';
-                    label.style.marginBottom = '8px';
-                    label.style.cursor = 'pointer';
-
-                    label.innerHTML = `
-                        <input type="checkbox" value="${service.id}" style="margin-right: 8px; cursor: pointer;">
-                        <span>${service.name}</span>
-                    `;
-
-                    const checkbox = label.querySelector('input');
-
-                    checkbox.addEventListener('change', () => {
-                        const option = servicesSelect.querySelector(`option[value="${service.id}"]`);
-                        if (option) {
-                            option.selected = checkbox.checked;
-                            servicesSelect.dispatchEvent(new Event('change'));
-                        }
-                    });
-
-                    checkboxContainer.appendChild(label);
-                });
-            })
-            .catch(() => {
-                checkboxContainer.innerHTML = '<span style="color: #dd4b39;">Не удалось загрузить список услуг.</span>';
-            });
+    if (!master.value || !service.value || !date.value) {
+        console.log("Пропуск loadSlots: заполнены не все поля");
+        return;
     }
 
-    masterSelect.addEventListener('change', (e) => {
-        updateServices(e.target.value);
-    });
+    try {
+        const response = await fetch(`/appointment/available-slots/?master=${master.value}&service=${service.value}&date=${date.value}`);
+        const slots = await response.json();
+        console.log("Загруженные слоты времени:", slots);
 
-    updateServices(masterSelect.value);
-});
+        slots.forEach(slot => {
+            const option = document.createElement("option");
+            option.value = slot;
+            option.textContent = slot;
+            time.appendChild(option);
+        });
+    } catch (error) {
+        console.error("Ошибка при загрузке слотов времени:", error);
+    }
+}
+
+// =========================
+// Навешивание событий
+// =========================
+if (master) master.addEventListener("change", loadServices);
+if (service) service.addEventListener("change", loadSlots);
+if (date) date.addEventListener("change", loadSlots);
+
+// =========================
+// Инициализация при старте страницы
+// =========================
+function initializeForm() {
+    console.log("Инициализация формы...");
+    
+    // Подставляем мастера из URL, если он пришел с главной страницы и поле еще пустое
+    if (master && urlMasterId && !master.value) {
+        master.value = urlMasterId;
+    }
+
+    // Запускаем первичную загрузку услуг, чтобы отработал выбор из URL параметров
+    loadServices();
+}
+
+// Запуск после построения DOM
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeForm);
+} else {
+    initializeForm();
+}

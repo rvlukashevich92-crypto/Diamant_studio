@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Application(models.Model):
@@ -54,9 +55,10 @@ class Application(models.Model):
     client_phone = models.CharField(max_length=20)
 
     def __str__(self):
-        return (
-            f"{self.user.username} — "
-            f"{self.master} — "
-            f"{self.service.name} "
-            f"({self.appointment_date} {self.appointment_time})"
-        )
+        # Если пользователь есть, берем username. Если нет — имя клиента из формы.
+        if self.user and hasattr(self.user, 'username'):
+            client_display = self.user.username
+        else:
+            client_display = self.client_name or "Аноним"
+            
+        return f"Запись: {client_display} к {self.master.name if self.master else '---'}"

@@ -4,6 +4,10 @@ from .forms import ApplicationForm
 from django.contrib import messages
 from datetime import datetime, timedelta
 from django.http import JsonResponse
+from masters.models import Master
+from services.models import Service
+from datetime import date
+
 
 
 def get_available_slots(master, service, appointment_date):
@@ -41,16 +45,34 @@ def get_available_slots(master, service, appointment_date):
 def appointment_create(request):
     if request.method == "POST":
         form = ApplicationForm(request.POST)
-        
         if form.is_valid():
-            form.save()
-            messages.success(
-                request, 
-                "Вы успешно записались! Мы скоро свяжемся с вами."
-            )
+            appointment = form.save(commit=False)
+            
+            if request.user.is_authenticated:
+                appointment.user = request.user
+
+            appointment.save()
+        
+            messages.success(request, "Вы успешно записались! Мы скоро свяжемся с вами.")
             return redirect("index")
     else:
-        form = ApplicationForm()
+        initial = {}
+        # Читаем параметры, которые пришли с главной страницы
+        service_id = request.GET.get("service_id") or request.GET.get("service")
+        master_id = request.GET.get("master_id") or request.GET.get("master")
+        
+        if service_id:
+            initial["service"] = service_id
+            # Если мастер не выбран, автоматически выберем первого мастера для этой услуги
+            if not master_id:
+                first_master = Master.objects.filter(services__id=service_id).first()
+                if first_master:
+                    initial["master"] = first_master.id
+                    
+        if master_id:
+            initial["master"] = master_id
+
+        form = ApplicationForm(initial=initial)
 
     return render(request, "appointment.html", {"form": form})
 
@@ -67,9 +89,7 @@ def available_slots(request):
     ):
         return JsonResponse([], safe=False)
     
-    from masters.models import Master
-    from services.models import Service
-    from datetime import date
+    
 
     master = Master.objects.get(pk=master_id)
     service = Service.objects.get(pk=service_id)
@@ -89,18 +109,27 @@ def available_slots(request):
         safe=False
     )
 
-from masters.models import Master
+
+
+from services.models import Service  # Убедитесь, что импорт есть вверху файла
 
 def master_services(request):
-
     master_id = request.GET.get("master")
 
-    if not master_id:
-        return JsonResponse([], safe=False)
+    # ЕСЛИ МАСТЕР НЕ ВЫБРАН: отдаем абсолютно все услуги салона
+    if not master_id or master_id == "":
+        services = [
+            {
+                "id": service.id, 
+                "name": service.name,
+            }
+            for service in Service.objects.all()
+        ]
+        return JsonResponse(services, safe=False)
     
+    # ЕСЛИ МАСТЕР ВЫБРАН: отдаем только его услуги (ваш оригинальный код)
     try:
         master = Master.objects.get(pk=master_id)
-
     except Master.DoesNotExist:
         return JsonResponse([], safe=False)
     
@@ -113,3 +142,4 @@ def master_services(request):
     ]
 
     return JsonResponse(services, safe=False)
+

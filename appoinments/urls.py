@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import appointment_create, available_slots, master_services
+from . import views
 
 urlpatterns = [
     path("", appointment_create, 
@@ -15,5 +16,7 @@ urlpatterns = [
         "master-services/", 
         master_services, 
         name="master-services"),    
+    
+  
 ]
 

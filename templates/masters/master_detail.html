@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ master.name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="col-md-4">
+
+        {% if master.photo %}
+
+        <img
+            src="{{ master.photo.url }}"
+            class="img-fluid rounded shadow">
+
+        {% endif %}
+
+    </div>
+
+    <div class="col-md-8">
+
+        <h1>
+
+            {{ master.name }}
+            
+        </h1>
+
+        <h4 class="text-muted">
+
+            {{ master.specialization }}
+
+        </h4>
+
+        <p>
+
+            <strong>Опыт:</strong>
+
+            {{ master.experience }} лет
+
+        </p>
+
+        <hr>
+
+        <h4>
+
+            О мастере
+
+        </h4>
+
+        <p>
+
+            {{ master.about }}
+
+        </p>
+
+        <hr>
+
+        <h4>
+
+            Услуги
+
+        </h4>
+
+        <ul>
+
+            {% for service in master.services.all %}
+
+            <li>
+
+                {{ service.name }}
+                —
+                {{ service.price }} BYN
+
+            </li>
+
+            {% endfor %}
+
+        </ul>
+
+        <hr>
+<h4>Галерея работ</h4>
+<div class="row">
+    {% for item in master.portfolio_images.all %}
+        <div class="col-md-4 mb-3">
+            <!-- Обертка для активации Lightbox -->
+            <a data-fslightbox="gallery" href="{{ item.image.url }}">
+                <img 
+                    src="{{ item.image.url }}" 
+                    class="img-fluid rounded shadow-sm w-100" 
+                    style="height: 200px; object-fit: cover; cursor: pointer; transition: transform 0.2s;" 
+                    onmouseover="this.style.transform='scale(1.02)'"
+                    onmouseout="this.style.transform='scale(1)'"
+                    alt="Работа мастера {{ master.name }}">
+            </a>
+        </div>
+    {% empty %}
+        <p class="text-muted">У этого мастера пока нет загруженных работ.</p>
+    {% endfor %}
+</div>
+
+       <a
+            href="{% url 'appointment_create' %}?master={{ master.id }}"
+            class="btn btn-primary btn-lg">
+    
+    
+             Записаться
+</a>
+
+    </div>
+
+</div>
+
+{% endblock %}

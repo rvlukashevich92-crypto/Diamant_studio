@@ -56,6 +56,27 @@
         </div>
 
     </div>
+    <ul class="navbar-nav ms-auto">
+    {% if request.user.is_authenticated %}
+        <!-- Если пользователь вошел -->
+        <li class="nav-item">
+            <a class="nav-link btn btn-outline-primary btn-sm me-2" href="{% url 'profile_dashboard' %}">
+                Мой кабинет ({{ request.user.username }})
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-danger" href="{% url 'logout' %}">Выйти</a>
+        </li>
+    {% else %}
+        <!-- Если пользователь гость -->
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Войти</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-success" href="{% url 'register' %}">Регистрация</a>
+        </li>
+    {% endif %}
+</ul>
 </nav>
 
 <div class="container mt-5">

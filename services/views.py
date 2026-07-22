@@ -8,9 +8,9 @@ def service_list(request):
 
     return render(
         request,
-            "service.html",
+            "services/service_list.html",
         {
-            "services": services
+            "services": services,
         }
 )
 

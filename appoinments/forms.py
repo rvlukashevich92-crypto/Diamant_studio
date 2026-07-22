@@ -23,18 +23,16 @@ class ApplicationForm(forms.ModelForm):
                 attrs={
                     "class": "form-select",
                     "id": "master",
-                    "placeholder": "Выберите мастера",
                     }
             ),
 
             "service": forms.Select(
                 attrs={"class": "form-select",
                        "id":"service",
-                       "placeholder": "Выберите услугу",
                        }
             ),
 
-            "appointment_date": forms.TimeInput(
+            "appointment_date": forms.DateInput(
                 attrs={
                     "class": "form-control",
                     "type": "date",
@@ -44,8 +42,7 @@ class ApplicationForm(forms.ModelForm):
 
             "appointment_time": forms.Select(
                 attrs={
-                    "class": "form-control",
-                    "type": "time",
+                    "class": "form-select",
                     "id": "appointment_time",
                 }
             ),
@@ -144,20 +141,24 @@ class ApplicationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        # Ограничение минимальной даты для выбора в календаре
         self.fields["appointment_date"].widget.attrs["min"] = (
             timezone.localdate().isoformat()
         )
 
-        master_id = self.data.get("master")
+        # Проверяем мастера в отправленных данных (POST) или в начальных данных (GET/initial)
+        master_id = self.data.get("master") or self.initial.get("master")
 
         if master_id:
             from masters.models import Master
-
             try:
                 master = Master.objects.get(pk=master_id)
                 self.fields["service"].queryset = master.services.all()
             except Master.DoesNotExist:
-                pass
-        
+                from services.models import Service
+                self.fields["service"].queryset = Service.objects.all()
         else:
-            self.fields["service"].queryset = self.fields["service"].queryset.none()
+            # ИСПРАВЛЕНО: Вместо .none() разрешаем показ всех услуг, 
+            # чтобы пользователь мог выбрать услугу до выбора мастера
+            from services.models import Service
+            self.fields["service"].queryset = Service.objects.all()

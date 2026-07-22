@@ -190,6 +190,14 @@
     </div>
 
 </div>
+
+<div id="django-data" 
+     data-master-services-url="{% url 'master-services' %}"
+     data-available-slots-url="{% url 'available_slots' %}"
+     data-initial-service="{{ form.initial.service|default:'' }}"
+     data-initial-master="{{ form.initial.master|default:'' }}">
+</div>
+
 <script src="{% static 'js/appointment.js' %}"></script>
 
 

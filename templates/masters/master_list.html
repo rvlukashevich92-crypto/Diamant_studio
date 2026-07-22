@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}
+Наши мастера
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center mb-5">
+    Наши мастера
+</h1>
+
+<div class="row g-4">
+
+{% for master in masters %}
+
+<div class="col-md-6 col-lg-4">
+
+<div class="card shadow h-100">
+
+{% if master.photo %}
+<img
+    src="{{ master.photo.url }}"
+    class="card-img-top"
+    style="height:300px; object-fit:cover;">
+{% endif %}
+
+<div class="card-body">
+
+<h4 class="card-title">
+
+{{ master.name }}
+
+</h4>
+
+<p class="text-muted">
+
+{{ master.specialization }}
+
+</p>
+
+<p>
+
+<b>Опыт:</b>
+
+{{ master.experience }} лет
+
+</p>
+
+<hr>
+
+<h6>
+
+Услуги
+
+</h6>
+
+<ul>
+
+{% for service in master.services.all %}
+
+<li>
+
+{{ service.name }}
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+<div class="card-footer bg-white">
+
+<div class="d-grid gap-2">
+
+<a
+href="{% url 'master_detail' master.id %}"
+class="btn btn-outline-primary">
+
+Подробнее
+
+</a>
+
+<a
+href="{% url 'appointment_create' %}?master={{ master.id }}"
+class="btn btn-primary">
+
+Записаться
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
