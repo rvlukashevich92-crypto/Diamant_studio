@@ -17,8 +17,12 @@
 
                 <div class="card-header bg-primary text-white">
 
-                    <h2 class="mb-0">
-                        Онлайн-запись
+                    <h2>
+                        {% if is_edit %}
+                            Перенос записи на другое время
+                        {% else %}
+                            Запись на процедуру
+                        {% endif %}
                     </h2>
 
                 </div>
