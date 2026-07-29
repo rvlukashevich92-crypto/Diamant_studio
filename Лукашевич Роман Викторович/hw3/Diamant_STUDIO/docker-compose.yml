@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postressql/postgres_data
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=diamant_studio_db
+      - POSTGRES_USER=diamant_studio_admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - "5432:5432"
+  web:
+      build: .
+      command: python manage.py runserver 0.0.0.0:8000
+      volumes:
+        - .:/app  
+      ports:
+        - "8000:8000"
+      env_file:
+        - .env
+      depends_on:
+        - db
+
+volumes:
+  postgres_data:
+
+
+
+
+    
