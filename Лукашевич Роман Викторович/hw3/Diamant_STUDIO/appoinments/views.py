@@ -7,7 +7,10 @@ from django.http import JsonResponse
 from masters.models import Master
 from services.models import Service
 from datetime import date
-
+import os
+import requests
+from rest_framework.viewsets import ModelViewSet
+from .serializers import AppointmentSerializer
 
 
 def get_available_slots(master, service, appointment_date):
@@ -41,6 +44,24 @@ def get_available_slots(master, service, appointment_date):
 
     return slots
 
+def send_telegram_message(message_text):
+    """Функция отправки сообщений в телеграм"""
+    token = os.environ.get('TELEGRAM_BOT_TOKEN')
+    chat_id = os.environ.get('TELEGRAM_ADMIN_CHAT_ID')
+
+    if token and chat_id:
+        url = f"https://telegram.org{token}/sendMessage"
+        payload = {
+            "chat_id":chat_id,
+            "message_text": message_text,
+            "parse_mode": "Markdown"
+        }
+        try:
+            requests.post(url, json=payload, timeout=5)
+        except requests.exceptions.RequestException as e:
+            print(f"Ошибка отправки в Telegram: {e}")
+
+
 
 def appointment_create(request):
     if request.method == "POST":
@@ -50,8 +71,24 @@ def appointment_create(request):
             
             if request.user.is_authenticated:
                 appointment.user = request.user
-
             appointment.save()
+
+            text = (
+                f"🔥 *Новая запись в салон!*\n\n"
+                f"👤 *Клиент:* {appointment.client_name}\n"
+                f"📞 *Телефон:* `{appointment.client_phone}`\n"
+                f"✂️ *Услуга:* {appointment.service.name}\n"
+                f"💇‍♂️ *Мастер:* {appointment.master.name}\n"
+                f"📅 *Дата:* {appointment.appointment_date.strftime('%d.%m.%Y')}\n"
+                f"⏰ *Время:* {appointment.appointment_time.strftime('%H:%M')}\n"
+            )
+            if appointment.comment:
+                text += f"💬 *Комментарий:* {appointment.comment}"
+
+
+            send_telegram_message(text)
+
+
         
             messages.success(request, "Вы успешно записались! Мы скоро свяжемся с вами.")
             return redirect("index")
@@ -143,3 +180,6 @@ def master_services(request):
 
     return JsonResponse(services, safe=False)
 
+class AppointmentViewSet(ModelViewSet):
+    queryset = Application.objects.all()
+    serializer_class = AppointmentSerializer

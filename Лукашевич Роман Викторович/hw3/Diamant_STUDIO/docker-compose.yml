@@ -25,6 +25,32 @@ services:
         - .env
       depends_on:
         - db
+        # diamantstudiogrodno.pagekite.me	
+  bot:
+      build: .
+      command: python run_bot.py
+      volumes:
+        - .:/app
+      
+      environment:         
+        - TELEGRAM_BOT_TOKEN=8560836641:AAEKsBAUFHWWmz3H3GFmEL4PIuIQSKYPRoo
+        - TELEGRAM_ADMIN_CHAT_ID=698071646
+        - DB_NAME=diamant_studio_db
+        - DB_USER=diamant_studio_admin
+        - DB_PASSWORD=admin
+        - DB_HOST=db
+        - DB_PORT=5432
+      depends_on:
+        - db
+        - web
+
+  tunnel:
+    image: node:20-alpine
+    restart: always
+    command: sh -c "npm install -g localtunnel && lt --port 8000 --local-host web --host https://localtunnel.me"
+     
+    depends_on:
+      - web
 
 volumes:
   postgres_data:

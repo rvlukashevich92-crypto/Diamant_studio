@@ -18,16 +18,29 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+from masters.views import MasterListAPIView
+from rest_framework.routers import DefaultRouter
+from services.views import ServiceViewSet
+from appoinments.views import AppointmentViewSet
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+router = DefaultRouter()
+router.register(r'services', ServiceViewSet, basename='service')
+router.register(r'appointments', AppointmentViewSet, basename='appointment')
 
 
 urlpatterns = [
 
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.col_roles if hasattr(admin.site, 'col_roles') else admin.site.urls),
     path('', include("core.urls")),
     path("masters/", include("masters.urls")),
     path("services/", include("services.urls")),
     path("appointment/", include("appoinments.urls")),
     path('', include('users.urls')),
+    path('api/masters/', MasterListAPIView.as_view(), name='api-master-list'),
+    path('api/', include(router.urls)),
+    path('api/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
 if settings.DEBUG:
