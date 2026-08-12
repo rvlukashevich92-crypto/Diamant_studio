@@ -20,3 +20,13 @@ class Service(models.Model):
 
     def __str__(self):
         return self.name
+
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
+from django.core.cache import cache
+
+@receiver([post_save, post_delete], sender=Service)
+def clear_cache_on_service_change(sender, instance, **kwargs):
+    """Автоматический сброс кэша Redis при изменении списка услуг"""
+    print("🧹 Данные услуг изменились! Автоматически очищаем кэш Redis...")
+    cache.clear()

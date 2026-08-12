@@ -108,3 +108,13 @@ class Reviews(models.Model):
 
     def __str__(self):
         return f"Отзыв от {self.user.username} для {self.master.name} ({self.rating}★)"
+
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
+from django.core.cache import cache
+
+@receiver([post_save, post_delete], sender=Master)
+def clear_cache_on_master_change(sender, instance, **kwargs):
+    """Автоматический сброс кэша Redis при создании, изменении или удалении мастера"""
+    print("Данные мастеров изменились! Автоматически очищаем кэш Redis...")
+    cache.clear()

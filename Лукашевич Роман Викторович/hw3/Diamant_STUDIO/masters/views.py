@@ -30,7 +30,7 @@ def master_detail(request, pk):
     )
     reviews = master.reviews.all()
 
-    average_rating = reviews.aggregate(Avg('rating'))['rating_avg']
+    average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
     if average_rating: 
         average_rating = round(average_rating, 1)
     else:
