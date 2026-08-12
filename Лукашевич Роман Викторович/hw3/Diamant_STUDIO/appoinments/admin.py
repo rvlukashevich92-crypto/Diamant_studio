@@ -28,3 +28,5 @@ class ApplicationAdmin(admin.ModelAdmin):
         "-appointment_date",
         "-appointment_time",
     )
+
+

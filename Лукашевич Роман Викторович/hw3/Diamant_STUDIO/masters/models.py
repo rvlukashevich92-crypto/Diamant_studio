@@ -3,6 +3,8 @@ import sys
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from PIL import Image
+from django.conf import settings
+from django.core.validators import MinValueValidator, MaxValueValidator
 class Master(models.Model):
 
     class Meta:
@@ -79,5 +81,30 @@ class MasterPortFolioImage(models.Model):
     def __str__(self):
         return f"Фото для мастера {self.master.name} ({self.id})"
 
+class Reviews(models.Model):
+    master = models.ForeignKey(
+        'Master',
+        on_delete=models.CASCADE,
+        related_name='reviews',
+        verbose_name="Мастер"
+    )
 
-# Create your models here.
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Автор"
+    )
+    text = models.TextField(verbose_name="Текст отзыва")
+    rating = models.PositiveIntegerField(
+        verbose_name="Рейтинг",
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата созадния отзыва")
+
+    class Meta:
+        verbose_name = "Oтзыв"
+        verbose_name_plural="Отзывы"
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"Отзыв от {self.user.username} для {self.master.name} ({self.rating}★)"

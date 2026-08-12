@@ -14,6 +14,12 @@ services:
       - POSTGRES_PASSWORD=admin
     ports:
       - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    ports:
+      - "6379:6379"
   web:
       build: .
       command: python manage.py runserver 0.0.0.0:8000
@@ -25,6 +31,7 @@ services:
         - .env
       depends_on:
         - db
+        - redis
         # diamantstudiogrodno.pagekite.me	
   bot:
       build: .
@@ -52,8 +59,35 @@ services:
     depends_on:
       - web
 
+  worker:
+    build: .
+    command: celery -A config worker --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+  beat:
+    build: .
+    command: celery -A beat --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
 volumes:
   postgres_data:
+    external: true
+    name: diamant_studio_postgres_data
+
+  
+    
 
 
 

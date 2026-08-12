@@ -13,19 +13,13 @@ from rest_framework.viewsets import ModelViewSet
 from .serializers import AppointmentSerializer
 
 
+from .tasks import send_appointment_notifications_task
+
 def get_available_slots(master, service, appointment_date):
     slots = []
 
-    current = datetime.combine(
-        appointment_date,
-        master.work_start
-    )
-
-    end = datetime.combine(
-        appointment_date,
-        master.work_end
-        )
-    
+    current = datetime.combine(appointment_date,master.work_start)
+    end = datetime.combine(appointment_date,master.work_end)
     step = timedelta(minutes=service.duration)
 
     occupied = set(
@@ -85,9 +79,14 @@ def appointment_create(request):
             if appointment.comment:
                 text += f"💬 *Комментарий:* {appointment.comment}"
 
-
-            send_telegram_message(text)
-
+            send_appointment_notifications_task.delay(
+                text_message=text,
+                client_name=appointment.client_name,
+                client_phone=appointment.client_phone,
+                service_name=appointment.service.name,
+                date_str=appointment.appointment_date.strftime('%d.%m.%Y'),
+                time_str=appointment.appointment_time.strftime('%H:%M')
+            )
 
         
             messages.success(request, "Вы успешно записались! Мы скоро свяжемся с вами.")
@@ -183,3 +182,26 @@ def master_services(request):
 class AppointmentViewSet(ModelViewSet):
     queryset = Application.objects.all()
     serializer_class = AppointmentSerializer
+
+    def perform_create(self,serializer):
+        appointment = serializer.save()
+
+        text = (
+            f"🔥 *Новая запись в салон!*\n\n"
+            f"👤 *Клиент:* {appointment.client_name}\n"
+            f"📞 *Телефон:* `{appointment.client_phone}`\n"
+            f"✂️ *Услуга:* {appointment.service.name}\n"
+            f"💇‍♂️ *Мастер:* {appointment.master.name}\n"
+            f"📅 *Дата:* {appointment.appointment_date.strftime('%d.%m.%Y')}\n"
+            f"⏰ *Время:* {appointment.appointment_time.strftime('%H:%M')}\n"
+        )
+        
+
+        send_appointment_notifications_task.delay(
+            text_message=text,
+            client_name=appointment.client_name,
+            client_phone=appointment.client_phone,
+            service_name=appointment.service.name,
+            date_str=appointment.appointment_date.strftime('%d.%m.%Y'),
+            time_str=appointment.appointment_time.strftime('%H:%M')
+        )

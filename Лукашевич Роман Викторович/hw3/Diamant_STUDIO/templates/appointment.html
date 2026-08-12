@@ -7,16 +7,13 @@
 
 {% block content %}
 
+<script src="https://telegram.org"></script>
+
 <div class="container py-5">
-
     <div class="row justify-content-center">
-
         <div class="col-lg-8">
-
             <div class="card shadow">
-
                 <div class="card-header bg-primary text-white">
-
                     <h2>
                         {% if is_edit %}
                             Перенос записи на другое время
@@ -24,17 +21,14 @@
                             Запись на процедуру
                         {% endif %}
                     </h2>
-
                 </div>
 
                 <div class="card-body">
-
                     <p class="text-muted mb-4">
                         Заполните форму, и мы свяжемся с вами для подтверждения записи.
                     </p>
 
-                    <form method="post">
-
+                    <form method="post" id="appointment-form">
                         {% csrf_token %}
 
                         {% if form.non_field_errors %}
@@ -44,155 +38,82 @@
                         {% endif %}
 
                         <div class="mb-3">
-
-                            <label class="form-label">
-                                Мастер
-                            </label>
-
+                            <label class="form-label">Мастер</label>
                             {{ form.master }}
-
                             {% if form.master.errors %}
-                                <div class="text-danger mt-1">
-                                    {{ form.master.errors }}
-                                </div>
+                                <div class="text-danger mt-1">{{ form.master.errors }}</div>
                             {% endif %}
-
                         </div>
 
                         <div class="mb-3">
-
-                            <label class="form-label">
-                                Услуга
-                            </label>
-
+                            <label class="form-label">Услуга</label>
                             {{ form.service }}
-
                             {% if form.service.errors %}
-                                <div class="text-danger mt-1">
-                                    {{ form.service.errors }}
-                                </div>
+                                <div class="text-danger mt-1">{{ form.service.errors }}</div>
                             {% endif %}
-
                         </div>
 
                         <div class="row">
-
                             <div class="col-md-6 mb-3">
-
-                                <label class="form-label">
-                                    Дата
-                                </label>
-
+                                <label class="form-label">Дата</label>
                                 {{ form.appointment_date }}
-
                                 {% if form.appointment_date.errors %}
-                                    <div class="text-danger mt-1">
-                                        {{ form.appointment_date.errors }}
-                                    </div>
+                                    <div class="text-danger mt-1">{{ form.appointment_date.errors }}</div>
                                 {% endif %}
-
                             </div>
 
                             <div class="col-md-6 mb-3">
-
-                                <label class="form-label">
-                                    Время
-                                </label>
-
+                                <label class="form-label">Время</label>
                                 {{ form.appointment_time }}
-
                                 {% if form.appointment_time.errors %}
-                                    <div class="text-danger mt-1">
-                                        {{ form.appointment_time.errors }}
-                                    </div>
+                                    <div class="text-danger mt-1">{{ form.appointment_time.errors }}</div>
                                 {% endif %}
-
                             </div>
-
                         </div>
 
                         <div class="mb-3">
-
-                            <label class="form-label">
-                                Пол
-                            </label>
-
+                            <label class="form-label">Пол</label>
                             {{ form.gender }}
-
                             {% if form.gender.errors %}
-                                <div class="text-danger mt-1">
-                                    {{ form.gender.errors }}
-                                </div>
+                                <div class="text-danger mt-1">{{ form.gender.errors }}</div>
                             {% endif %}
-
                         </div>
 
                         <div class="mb-3">
-
-                            <label class="form-label">
-                                Ваше имя
-                            </label>
-
+                            <label class="form-label">Ваше имя</label>
                             {{ form.client_name }}
-
                             {% if form.client_name.errors %}
-                                <div class="text-danger mt-1">
-                                    {{ form.client_name.errors }}
-                                </div>
+                                <div class="text-danger mt-1">{{ form.client_name.errors }}</div>
                             {% endif %}
-
                         </div>
 
                         <div class="mb-3">
-
-                            <label class="form-label">
-                                Телефон
-                            </label>
-
+                            <label class="form-label">Телефон</label>
                             {{ form.client_phone }}
-
                             {% if form.client_phone.errors %}
-                                <div class="text-danger mt-1">
-                                    {{ form.client_phone.errors }}
-                                </div>
+                                <div class="text-danger mt-1">{{ form.client_phone.errors }}</div>
                             {% endif %}
-
                         </div>
 
                         <div class="mb-3">
-
-                            <label class="form-label">
-                                Комментарий
-                            </label>
-
+                            <label class="form-label">Комментарий</label>
                             {{ form.comment }}
-
                             {% if form.comment.errors %}
-                                <div class="text-danger mt-1">
-                                    {{ form.comment.errors }}
-                                </div>
+                                <div class="text-danger mt-1">{{ form.comment.errors }}</div>
                             {% endif %}
-
                         </div>
 
                         <button
                             type="submit"
+                            id="submit-btn"
                             class="btn btn-primary btn-lg w-100">
-
                             Записаться
-
                         </button>
-
                     </form>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
 
 <div id="django-data" 
@@ -205,4 +126,56 @@
 <script src="{% static 'js/appointment.js' %}"></script>
 
 
+<script>
+    const tg = window.Telegram.WebApp;
+    tg.expand(); 
+    tg.ready();
+
+    document.getElementById('appointment-form').addEventListener('submit', async function(e) {
+        e.preventDefault(); 
+
+        const submitBtn = document.getElementById('submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Сохранение...';
+
+        const formData = {
+            master: document.getElementById('id_master').value,
+            service: document.getElementById('id_service').value,
+            appointment_date: document.getElementById('id_appointment_date').value,
+            appointment_time: document.getElementById('id_appointment_time').value,
+            gender: document.getElementById('id_gender').value,
+            client_name: document.getElementById('id_client_name').value,
+            client_phone: document.getElementById('id_client_phone').value,
+            comment: document.getElementById('id_comment').value
+        };
+
+        try {
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            const response = await fetch('/api/appointments/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                // Выводим нативное уведомление мессенджера
+                tg.showAlert("Вы успешно записались в Diamant Studio! Ждем вас.");
+                // Закрываем окно Mini App и возвращаем в чат
+                tg.close();
+            } else {
+                tg.showAlert("Ошибка заполнения формы. Проверьте введенные данные.");
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Записаться';
+            }
+        } catch (error) {
+            tg.showAlert("Ошибка соединения с API сервером.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Записаться';
+        }
+    });
+</script>
 {% endblock %}

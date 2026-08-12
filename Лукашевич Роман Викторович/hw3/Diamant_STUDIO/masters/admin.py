@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Master, MasterPortFolioImage
+from .models import Master, MasterPortFolioImage, Reviews
+
 
 class MasterPortfolioImageInline(admin.TabularInline):
     model = MasterPortFolioImage
@@ -31,3 +32,9 @@ class MasterAdmin(admin.ModelAdmin):
     inlines = [MasterPortfolioImageInline]
 
     admin.site.register(MasterPortFolioImage)   
+
+@admin.register(Reviews)
+class ReviewsAdmin(admin.ModelAdmin):
+    list_display = ('master', 'user', 'rating', 'created_at')
+    list_filter = ('rating', 'created_at', 'master')
+    search_fields = ('text', 'user__username', 'master__name')

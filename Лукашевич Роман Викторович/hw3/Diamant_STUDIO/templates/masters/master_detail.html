@@ -100,6 +100,36 @@
         <p class="text-muted">У этого мастера пока нет загруженных работ.</p>
     {% endfor %}
 </div>
+<div class="mb-4">
+    <h3>Средний рейтинг: <span class="text-warning">{{ average_rating }} ★</span></h3>
+</div>
+
+<!-- Блок списка отзывов -->
+<div class="card shadow-sm mt-4">
+    <div class="card-header bg-light">
+        <h4>💬 Отзывы клиентов</h4>
+    </div>
+    <div class="card-body">
+        {% if reviews %}
+            {% for review in reviews %}
+                <div class="border-bottom pb-3 mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <!-- Выводим имя автора -->
+                        <strong>{{ review.user.username }}</strong>
+                        <!-- Красиво выводим закрашенные звезды на основе рейтинга -->
+                        <span class="text-warning">
+                            {% if review.rating == 5 %}★★★★★{% elif review.rating == 4 %}★★★★{% elif review.rating == 3 %}★★★{% elif review.rating == 2 %}★★{% else %}★{% endif %}
+                        </span>
+                    </div>
+                    <p class="mt-2 mb-1 text-secondary">{{ review.text }}</p>
+                    <small class="text-muted">{{ review.created_at|date:"d.m.Y H:i" }}</small>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted">У этого мастера пока нет отзывов. Будьте первым!</p>
+        {% endif %}
+    </div>
+</div>
 
        <a
             href="{% url 'appointment_create' %}?master={{ master.id }}"
