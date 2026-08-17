@@ -1,11 +1,13 @@
+import logging
 from django.shortcuts import render, get_object_or_404
-
 from .models import Master
 from rest_framework.generics import ListAPIView
 from .serializers import MasterSerializer
 from django.db.models import Avg
 from django.utils.decorators import method_decorator 
 from django.views.decorators.cache import cache_page
+
+logger = logging.getLogger(__name__)
 
 @cache_page(900)
 def master_list(request):
@@ -23,11 +25,17 @@ def master_list(request):
 )
 
 def master_detail(request, pk):
-    master = get_object_or_404(
-        Master.objects.prefetch_related("services"),
-        pk=pk,
-        is_active=True,
-    )
+    try:
+        master = get_object_or_404(
+            Master.objects.prefetch_related("services"),
+            pk=pk,
+            is_active=True,
+        )
+        logger.info(f"Просмотр профиля мастера:{master.name} (ID:{pk})")
+    except Http404 as e:
+        logger.error(f"Ошибка 404! Попытка доступа к несуществующему мастеру с ID:{pk}")
+        raise e
+
     reviews = master.reviews.all()
 
     average_rating = reviews.aggregate(Avg('rating'))['rating__avg']

@@ -1,62 +1,81 @@
 import os 
 import requests
+import logging
 from celery import shared_task
+from datetime import timedelta  
 from django.utils.timezone import now
 from .models import Application
+
+# Настраиваем логгер для этого файла
+logger = logging.getLogger(__name__)
 
 
 @shared_task
 def send_appointment_notifications_task(text_message, client_name, client_phone, service_name, date_str, time_str):
-
-
     token = os.environ.get('TELEGRAM_BOT_TOKEN')
     chat_id = os.environ.get('TELEGRAM_ADMIN_CHAT_ID')
 
     if token and chat_id:
+       
         url = f"https://telegram.org{token}/sendMessage"
         payload = {
-        "chat_id": chat_id,
-        "text": text_message,
-        "parse_mode": "Markdown"
+            "chat_id": chat_id,
+            "text": text_message,
+            "parse_mode": "Markdown"
         }
         try:
-            requests.post(url, json=payload, timeout=10)
+            logger.info("📡 Celery отправляет мгновенное уведомление о записи в Telegram...")
+            # ИСПРАВЛЕНО: сохраняем ответ в переменную response
+            response = requests.post(url, json=payload, timeout=10)
+            response.raise_for_status()
+            logger.info(f"✅ Уведомление о записи клиента {client_name} успешно доставлено.")
         except requests.exceptions.RequestException as e:
-            print(f"Ошибка фоновой отправки в Telegram через Celery: {e}")
+            logger.error(f"🚨 Критический сбой сети Celery при отправке в Telegram: {e}")
+
 
 @shared_task
 def check_and_send_reminders_task():
     token = os.environ.get('TELEGRAM_BOT_TOKEN')
     chat_id = os.environ.get('TELEGRAM_ADMIN_CHAT_ID')
     
-    if token and chat_id:
+    
+    if not token or not chat_id:
+        logger.warning("⚠️ Проверка напоминаний отменена: отсутствуют настройки TELEGRAM в .env")
         return
 
     current_time = now()
     reminder_target = current_time + timedelta(hours=2)
 
+    # Ищем записи на нужное время
     upcoming_appointments = Application.objects.filter(
         appointment_date=reminder_target.date(),
         appointment_time__hour=reminder_target.hour,
         appointment_time__minute=reminder_target.minute
     )
+    
+    if upcoming_appointments.exists():
+        logger.info(f"⏱️ Найдено записей для напоминания за 2 часа: {upcoming_appointments.count()}")
+
     for app in upcoming_appointments:
         reminder_text = (
-            f"⏰ **Напоминание о записи в Diamant_studio!**\n\n"
+            f"⏰ **Напоминание о записи в Diamant Studio!**\n\n"
             f"👤 Уважаемый {app.client_name}, ждем Вас через 2 часа!\n"
             f"✂️ Услуга: {app.service.name}\n"
             f"💇‍♂️ Мастер: {app.master.name}\n"
             f"⏰ Время: {app.appointment_time.strftime('%H:%M')}"
         )
+       
         url = f"https://telegram.org{token}/sendMessage"
         payload = {
-                "chat_id": chat_id,
-                "text": reminder_text,
-                "parse_mode": "Markdown"
-                }
+            "chat_id": chat_id, 
+            "text": reminder_text,
+            "parse_mode": "Markdown"
+        }
         try:
-            requests.post(url, json=payload, timeout=10)
-        except requests.exceptions.RequestException:
-            pass
+            response = requests.post(url, json=payload, timeout=10)
+            response.raise_for_status()
+            logger.info(f"⏰ Авто-напоминание для {app.client_name} успешно отправлено в Telegram.")
+        except requests.exceptions.RequestException as e:
+            logger.error(f"🚨 Не удалось отправить напоминание для {app.client_name}: {e}")
 
         

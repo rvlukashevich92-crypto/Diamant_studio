@@ -11,7 +11,9 @@ import os
 import requests
 from rest_framework.viewsets import ModelViewSet
 from .serializers import AppointmentSerializer
+import logging
 
+logger = logging.getLogger(__name__)
 
 from .tasks import send_appointment_notifications_task
 
@@ -66,6 +68,13 @@ def appointment_create(request):
             if request.user.is_authenticated:
                 appointment.user = request.user
             appointment.save()
+
+            logger.info(
+                f"🔥 *Новая запись в салон! Клиент: {appointment.client_name} | "
+                f"📞 *Телефон:* `{appointment.client_phone} | "
+                f"✂️ *Услуга:* {appointment.service.name}| "
+                f"💇‍♂️ *Мастер:* {appointment.master.name}"
+            )
 
             text = (
                 f"🔥 *Новая запись в салон!*\n\n"

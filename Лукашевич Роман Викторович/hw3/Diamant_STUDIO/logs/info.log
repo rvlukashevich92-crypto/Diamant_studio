@@ -1,0 +1,60 @@
+[14.08.2026 15:17:27] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:18:09] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:18:10] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:18:14] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:18:14] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:18:33] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:18:34] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:18:36] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:18:37] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:18:42] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:18:43] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:18:46] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:18:47] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:18:50] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:18:51] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:18:53] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:18:54] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:18:57] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:18:58] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:21:26] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:21:27] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:21:34] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:21:35] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:21:44] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:21:45] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:22:12] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:22:12] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:22:14] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:22:15] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:22:33] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:22:34] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:22:45] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:22:46] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:22:54] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:22:55] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:22:57] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:22:58] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:23:08] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:23:09] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:23:24] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:23:25] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:23:28] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:23:29] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:23:32] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:23:33] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:23:41] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:23:41] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:23:43] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:23:44] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:23:50] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:23:51] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.08.2026 15:23:56] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[14.08.2026 15:23:57] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[15.08.2026 11:06:52] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[17.08.2026 14:03:12] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[17.08.2026 14:17:09] INFO [django.utils.autoreload:265] /app/masters/views.py changed, reloading.
+[17.08.2026 14:17:10] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[17.08.2026 14:17:46] WARNING [django.request:249] Not Found: /apiservices/
+[17.08.2026 14:20:21] WARNING [django.request:249] Unauthorized: /api/services/
+[17.08.2026 14:28:21] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader

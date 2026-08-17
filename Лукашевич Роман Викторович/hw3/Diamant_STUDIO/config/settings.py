@@ -169,3 +169,53 @@ CELERY_BEAT_SCHEDULE = {
     },
 }
 
+LOGS_DIR = os.path.join(BASE_DIR, 'logs')
+if not os.path.exists(LOGS_DIR):
+    os.makedirs(LOGS_DIR)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+     # Форматирование: как будет выглядеть строка в файле
+    'formatters': {
+        'standard': {
+            'format': '[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s',
+            'datefmt': '%d.%m.%Y %H:%M:%S'
+        },
+    },
+    # Обработчики: куда отправлять логи
+    'handlers': {
+        # 1. Запись информационных логов (все действия)
+        'info_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(LOGS_DIR, 'info.log'),
+            'formatter': 'standard',
+            'encoding': 'utf-8',
+        },
+          # 2. Запись строго ошибок (ERROR и CRITICAL)
+        'error_file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(LOGS_DIR, 'errors.log'),
+            'formatter': 'standard',
+            'encoding': 'utf-8',
+         },
+         # 3. Вывод в консоль Докера (чтобы видеть в live-режиме)
+         'console': {
+             'level': 'INFO',
+             'class': 'logging.StreamHandler',
+             'formatter': 'standard',
+         },
+    
+    },
+    # Логгеры: какие системные модули слушать
+    'loggers': {
+        'django': {
+            'handlers': ['info_file', 'error_file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+
+    },
+}
