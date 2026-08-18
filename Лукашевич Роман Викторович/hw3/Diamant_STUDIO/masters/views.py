@@ -36,7 +36,7 @@ def master_detail(request, pk):
         logger.error(f"Ошибка 404! Попытка доступа к несуществующему мастеру с ID:{pk}")
         raise e
 
-    reviews = master.reviews.all()
+    reviews = master.reviews.select_related('user').all()
 
     average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
     if average_rating: 

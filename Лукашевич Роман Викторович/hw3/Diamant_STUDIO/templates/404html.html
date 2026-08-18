@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center py-5my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="display-1 fw-bold text-danger">404</h1>
+            <h2 class="mb-4 fw-semibold">Страница не найдена</h2>
+            <p class="text-muted mb-5 fs-5">
+                Упс! Похоже, страница, которую вы ищете в салоне <strong>Diamant Studio</strong>, не существует или была перемещена по другому адресу.
+            </p>
+            <a href="{% url 'index' %}" class="btn btn-primary btn-lg px-4 shadow">
+                <i class="bi bi-house-door-fill me-2"></i> Вернуться на главную
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

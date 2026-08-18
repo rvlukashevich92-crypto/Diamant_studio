@@ -189,7 +189,7 @@ def master_services(request):
     return JsonResponse(services, safe=False)
 
 class AppointmentViewSet(ModelViewSet):
-    queryset = Application.objects.all()
+    queryset = Application.objects.select_related('master', 'service').all()
     serializer_class = AppointmentSerializer
 
     def perform_create(self,serializer):

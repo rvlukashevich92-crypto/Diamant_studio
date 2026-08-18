@@ -41,6 +41,10 @@ class Application(models.Model):
 
   
     appointment_date = models.DateField()
+    class Meta:
+        indexes = [
+            models.Index(fields=['appointment_date']),
+        ]
     appointment_time = models.TimeField()
     created_at = models.DateTimeField(auto_now_add=True)
 

@@ -17,6 +17,10 @@ class Master(models.Model):
     about = models.TextField()
     photo = models.ImageField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
+    class Meta:
+        indexes = [
+            models.Index(fields=['is_active']),
+        ] 
 
     services = models.ManyToManyField(
         "services.Service",

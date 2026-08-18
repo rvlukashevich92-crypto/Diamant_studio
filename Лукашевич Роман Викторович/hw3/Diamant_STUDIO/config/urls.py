@@ -23,6 +23,7 @@ from rest_framework.routers import DefaultRouter
 from services.views import ServiceViewSet
 from appoinments.views import AppointmentViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.views.defaults import page_not_found
 
 router = DefaultRouter()
 router.register(r'services', ServiceViewSet, basename='service')
@@ -41,6 +42,8 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('test404/', page_not_found, {'exception': Exception('Test')}),
+
 ]
 
 if settings.DEBUG:
