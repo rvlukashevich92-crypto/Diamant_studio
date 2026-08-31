@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- Левая колонка: Профиль клиента -->
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <!-- Выводит имя или юзернейм на основе вашего __str__ -->
+                    <h5 class="card-title mb-1">Привет, {{ request.user }}!</h5>
+                    <p class="text-muted small">@{{ request.user.username }}</p>
+                    {% if request.user.telegram_id %}
+                        <p class="text-success small">✓ Telegram подключен</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Правая колонка: Список записей -->
+        <div class="col-md-8">
+            <h3 class="mb-4">Мои записи на процедуры</h3>
+            
+            {% if appointments %}
+                <div class="table-responsive shadow-sm rounded">
+                   <table class="table table-hover align-middle bg-white mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Мастер</th>
+                                <th>Услуга</th>
+                                <th>Дата и время</th>
+                                <th>Статус</th>
+                                <th>Действие</th> <!-- Новая колонка -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for app in appointments %}
+                                <tr>
+                                    <td><strong>{{ app.master.name }}</strong></td>
+                                    <td>{{ app.service.name }}</td>
+                                    <td>{{ app.appointment_date|date:"d.m.Y" }} в {{ app.appointment_time|time:"H:i" }}</td>
+                                    <td>
+                                        {% if app.appointment_date >= today %}
+                                            <span class="badge bg-success">Ожидается</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">Завершен</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+    <!-- Кнопки управления активны только для будущих записей -->
+    {% if app.appointment_date >= today %}
+        <div class="btn-group" role="group">
+            <!-- Кнопка Изменить -->
+            <a href="{% url 'appointment_update' app.pk %}" class="btn btn-sm btn-outline-primary me-2">
+                Изменить
+            </a>
+            
+            <!-- Ваша существующая кнопка Отменить -->
+            <form method="POST" action="{% url 'appointment_cancel' app.pk %}" onsubmit="return confirm('Вы уверены, что хотите отменить запись к мастеру {{ app.master.name }}?');" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-outline-danger">Отменить</button>
+            </form>
+        </div>
+    {% else %}
+        <span class="text-muted small">—</span>
+    {% endif %}
+</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    У вас пока нет ни одной записи. <a href="{% url 'appointment_create' %}" class="alert-link">Записаться прямо сейчас</a>.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

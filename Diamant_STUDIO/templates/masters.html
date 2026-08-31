@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+Мастера
+{% endblock %}
+
+{% block content %}
+<h1>Наши мастера</h1>
+
+{% for master in masters %}
+    <div style="border:1px solid #ccc; padding:15px; margin-bottom:20px;">
+        {% if master.photo %}
+            <img src="{{ master.photo.url }}" alt="{{ master.name }}" width="200">
+        {% endif %}
+
+        <h2>{{ master.name }}</h2>
+
+        <p><strong>Специализация:</strong> {{ master.specialization }}</p>
+
+        <p>{{ master.about_master }}</p>
+
+        {% if master.is_active %}
+            <p style="color:green;">● Работает</p>
+        {% else %}
+            <p style="color:red;">● Не работает</p>
+        {% endif %}
+    </div>
+{% empty %}
+    <p>Мастеров пока нет.</p>
+{% endfor %}
+
+{% endblock %}

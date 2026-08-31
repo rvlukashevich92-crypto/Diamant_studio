@@ -1,0 +1,97 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:1.25-alpine
+    restart: always
+    ports:
+     - "80:80"
+    volumes:
+     - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:run_bot
+     - .:/app
+    depends_on:
+     - web
+  db:
+    image: postgres:15-alpine
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/postgres/data
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=diamant_studio_db
+      - POSTGRES_USER=diamant_studio_admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+  web:
+      build: .
+      command: python manage.py runserver 0.0.0.0:8000
+      volumes:
+        - .:/app  
+      expose:
+        - "8000"
+      env_file:
+        - .env
+      depends_on:
+        - db
+        - redis
+        # diamantstudiogrodno.pagekite.me	
+  bot:
+      build: .
+      command: python run_bot.py
+      volumes:
+        - .:/app
+      
+      environment:         
+        - TELEGRAM_BOT_TOKEN=8560836641:AAEKsBAUFHWWmz3H3GFmEL4PIuIQSKYPRoo
+        - TELEGRAM_ADMIN_CHAT_ID=698071646
+        - DB_NAME=diamant_studio_db
+        - DB_USER=diamant_studio_admin
+        - DB_PASSWORD=admin
+        - DB_HOST=db
+        - DB_PORT=5432
+      depends_on:
+        - db
+        - web
+
+  worker:
+    build: .
+    command: celery -A config worker --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+  beat:
+    build: .
+    command: celery -A beat --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+volumes:
+  postgres_data:
+    external: true
+    name: diamant_studio_postgres_data
+
+  
+    
+
+
+
+
+    
