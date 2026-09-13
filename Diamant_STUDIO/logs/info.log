@@ -2975,3 +2975,4 @@ django.core.exceptions.ImproperlyConfigured: Could not resolve URL for hyperlink
 [13.09.2026 20:57:03] INFO [django.server:249] "GET /api/masters/ HTTP/1.0" 200 14272
 [13.09.2026 20:57:13] INFO [django.server:249] "GET /api/masters/1 HTTP/1.0" 301 0
 [13.09.2026 20:57:13] INFO [django.server:249] "GET /api/masters/1/ HTTP/1.0" 200 11654
+[13.09.2026 20:57:19] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10298
