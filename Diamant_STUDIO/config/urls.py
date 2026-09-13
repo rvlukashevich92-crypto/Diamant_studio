@@ -28,6 +28,7 @@ from django.views.defaults import page_not_found
 router = DefaultRouter()
 router.register(r'services', ServiceViewSet, basename='service')
 router.register(r'appointments', AppointmentViewSet, basename='appointment')
+router.register(r'masters', MasterListAPIView, basename='master') 
 
 
 urlpatterns = [
@@ -38,7 +39,7 @@ urlpatterns = [
     path("services/", include("services.urls")),
     path("appointment/", include("appoinments.urls")),
     path('', include('users.urls')),
-    path('api/masters/', MasterListAPIView.as_view(), name='api-master-list'),
+   # path('api/masters/', MasterListAPIView.as_view(), name='api-master-list'),
     path('api/', include(router.urls)),
     path('api/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

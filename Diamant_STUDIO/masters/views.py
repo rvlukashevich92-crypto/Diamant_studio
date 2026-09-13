@@ -6,6 +6,7 @@ from .serializers import MasterSerializer
 from django.db.models import Avg
 from django.utils.decorators import method_decorator 
 from django.views.decorators.cache import cache_page
+from rest_framework.viewsets import ModelViewSet
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +55,7 @@ def master_detail(request, pk):
         request, "masters/master_detail.html", context     
 )
 
-class MasterListAPIView(ListAPIView):
+class MasterListAPIView(ModelViewSet):
     queryset = Master.objects.all()
     serializer_class = MasterSerializer
 

@@ -2663,3 +2663,315 @@ AttributeError: 'WSGIRequest' object has no attribute 'build_absolute_url'. Did 
 [13.09.2026 16:32:48] INFO [django.server:249] "GET /appointment/available-slots/?master=2&service=6&date=2026-09-16 HTTP/1.0" 200 324
 [13.09.2026 16:33:13] INFO [django.server:249] "POST /appointment/?service_id=6 HTTP/1.0" 302 0
 [13.09.2026 16:33:13] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[13.09.2026 16:33:15] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 10690
+[13.09.2026 20:28:06] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[13.09.2026 20:28:45] INFO [django.server:249] "GET /admin HTTP/1.0" 301 0
+[13.09.2026 20:28:45] INFO [django.server:249] "GET /admin/ HTTP/1.0" 200 17469
+[13.09.2026 20:28:47] INFO [django.server:249] "GET /api HTTP/1.0" 301 0
+[13.09.2026 20:28:47] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10171
+[13.09.2026 20:28:58] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10171
+[13.09.2026 20:28:59] INFO [django.server:249] "OPTIONS /api/ HTTP/1.0" 200 10303
+[13.09.2026 20:29:10] WARNING [django.request:249] Not Found: /api/master
+[13.09.2026 20:29:10] WARNING [django.server:249] "GET /api/master HTTP/1.0" 404 8299
+[13.09.2026 20:29:19] INFO [django.server:249] "GET /api/masters HTTP/1.0" 301 0
+[13.09.2026 20:29:19] INFO [django.server:249] "GET /api/masters/ HTTP/1.0" 200 14231
+[13.09.2026 20:29:34] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10171
+[13.09.2026 20:30:01] INFO [django.server:249] "GET /api/masters/ HTTP/1.0" 200 14231
+[13.09.2026 20:35:31] INFO [django.utils.autoreload:265] /app/appoinments/serializers.py changed, reloading.
+[13.09.2026 20:35:33] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:39:54] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:40:10] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10171
+[13.09.2026 20:40:14] INFO [django.server:249] "GET /api/services/ HTTP/1.0" 200 11987
+[13.09.2026 20:40:20] ERROR [django.request:249] Internal Server Error: /api/appointments/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/relations.py", line 396, in to_representation
+    url = self.get_url(value, self.view_name, request, format)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/relations.py", line 334, in get_url
+    return self.reverse(view_name, kwargs=kwargs, request=request, format=format)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/reverse.py", line 47, in reverse
+    url = _reverse(viewname, args, kwargs, request, format, **extra)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/reverse.py", line 60, in _reverse
+    url = django_reverse(viewname, args=args, kwargs=kwargs, **extra)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'application-detail' not found. 'application-detail' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 526, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 474, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 485, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 523, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 818, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 251, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 737, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 552, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/relations.py", line 411, in to_representation
+    raise ImproperlyConfigured(msg % self.view_name)
+django.core.exceptions.ImproperlyConfigured: Could not resolve URL for hyperlinked relationship using view name "application-detail". You may have failed to include the related model in your API, or incorrectly configured the `lookup_field` attribute on this field.
+[13.09.2026 20:40:20] ERROR [django.server:249] "GET /api/appointments/ HTTP/1.0" 500 152831
+[13.09.2026 20:41:07] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10171
+[13.09.2026 20:41:10] INFO [django.server:249] "GET /api/services/ HTTP/1.0" 200 11987
+[13.09.2026 20:41:31] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10171
+[13.09.2026 20:43:58] INFO [django.utils.autoreload:265] /app/appoinments/serializers.py changed, reloading.
+[13.09.2026 20:43:59] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:44:08] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10171
+[13.09.2026 20:44:10] ERROR [django.request:249] Internal Server Error: /api/appointments/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/relations.py", line 396, in to_representation
+    url = self.get_url(value, self.view_name, request, format)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/relations.py", line 334, in get_url
+    return self.reverse(view_name, kwargs=kwargs, request=request, format=format)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/reverse.py", line 47, in reverse
+    url = _reverse(viewname, args, kwargs, request, format, **extra)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/reverse.py", line 60, in _reverse
+    url = django_reverse(viewname, args=args, kwargs=kwargs, **extra)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'api-master-list' with keyword arguments '{'pk': 1}' not found. 1 pattern(s) tried: ['api/masters/\\Z']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 526, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 474, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 485, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 523, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 818, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 251, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 737, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 552, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/relations.py", line 411, in to_representation
+    raise ImproperlyConfigured(msg % self.view_name)
+django.core.exceptions.ImproperlyConfigured: Could not resolve URL for hyperlinked relationship using view name "api-master-list". You may have failed to include the related model in your API, or incorrectly configured the `lookup_field` attribute on this field.
+[13.09.2026 20:44:10] ERROR [django.server:249] "GET /api/appointments/ HTTP/1.0" 500 154226
+[13.09.2026 20:44:26] ERROR [django.request:249] Internal Server Error: /api/appointments/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/relations.py", line 396, in to_representation
+    url = self.get_url(value, self.view_name, request, format)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/relations.py", line 334, in get_url
+    return self.reverse(view_name, kwargs=kwargs, request=request, format=format)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/reverse.py", line 47, in reverse
+    url = _reverse(viewname, args, kwargs, request, format, **extra)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/reverse.py", line 60, in _reverse
+    url = django_reverse(viewname, args=args, kwargs=kwargs, **extra)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'api-master-list' with keyword arguments '{'pk': 1}' not found. 1 pattern(s) tried: ['api/masters/\\Z']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 526, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 474, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 485, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 523, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 818, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 251, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 737, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 552, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/relations.py", line 411, in to_representation
+    raise ImproperlyConfigured(msg % self.view_name)
+django.core.exceptions.ImproperlyConfigured: Could not resolve URL for hyperlinked relationship using view name "api-master-list". You may have failed to include the related model in your API, or incorrectly configured the `lookup_field` attribute on this field.
+[13.09.2026 20:44:26] ERROR [django.server:249] "GET /api/appointments/ HTTP/1.0" 500 154226
+[13.09.2026 20:51:31] INFO [django.utils.autoreload:265] /app/masters/serializers.py changed, reloading.
+[13.09.2026 20:51:32] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:51:34] INFO [django.utils.autoreload:265] /app/masters/serializers.py changed, reloading.
+[13.09.2026 20:51:35] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:51:39] INFO [django.utils.autoreload:265] /app/masters/serializers.py changed, reloading.
+[13.09.2026 20:51:40] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:51:48] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:51:51] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10171
+[13.09.2026 20:51:52] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10171
+[13.09.2026 20:52:04] ERROR [django.request:249] Internal Server Error: /api/appointments/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/relations.py", line 396, in to_representation
+    url = self.get_url(value, self.view_name, request, format)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/relations.py", line 334, in get_url
+    return self.reverse(view_name, kwargs=kwargs, request=request, format=format)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/reverse.py", line 47, in reverse
+    url = _reverse(viewname, args, kwargs, request, format, **extra)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/reverse.py", line 60, in _reverse
+    url = django_reverse(viewname, args=args, kwargs=kwargs, **extra)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'api-master-list' with keyword arguments '{'pk': 1}' not found. 1 pattern(s) tried: ['api/masters/\\Z']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 526, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 474, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 485, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 523, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 818, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 251, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 737, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 552, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/relations.py", line 411, in to_representation
+    raise ImproperlyConfigured(msg % self.view_name)
+django.core.exceptions.ImproperlyConfigured: Could not resolve URL for hyperlinked relationship using view name "api-master-list". You may have failed to include the related model in your API, or incorrectly configured the `lookup_field` attribute on this field.
+[13.09.2026 20:52:04] ERROR [django.server:249] "GET /api/appointments/ HTTP/1.0" 500 154226
+[13.09.2026 20:54:18] INFO [django.utils.autoreload:265] /app/config/urls.py changed, reloading.
+[13.09.2026 20:54:20] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:54:35] INFO [django.utils.autoreload:265] /app/config/urls.py changed, reloading.
+[13.09.2026 20:54:36] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:56:05] INFO [django.utils.autoreload:265] /app/masters/views.py changed, reloading.
+[13.09.2026 20:56:06] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:56:08] INFO [django.utils.autoreload:265] /app/masters/views.py changed, reloading.
+[13.09.2026 20:56:09] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:56:15] INFO [django.utils.autoreload:265] /app/masters/views.py changed, reloading.
+[13.09.2026 20:56:16] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:56:22] INFO [django.utils.autoreload:265] /app/masters/views.py changed, reloading.
+[13.09.2026 20:56:23] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:56:43] INFO [django.utils.autoreload:265] /app/masters/views.py changed, reloading.
+[13.09.2026 20:56:44] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 20:56:58] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10298
+[13.09.2026 20:57:03] INFO [django.server:249] "GET /api/masters/ HTTP/1.0" 200 14272
+[13.09.2026 20:57:13] INFO [django.server:249] "GET /api/masters/1 HTTP/1.0" 301 0
+[13.09.2026 20:57:13] INFO [django.server:249] "GET /api/masters/1/ HTTP/1.0" 200 11654
