@@ -77,7 +77,7 @@ def appointment_create(request):
                 f"💇‍♂️ *Мастер:* {appointment.master.name}"
             )
 
-            site_url = request.build_absolute_url(reverse('index'))
+            site_url = request.build_absolute_uri(reverse('index'))
 
             text = (
                 f"🔥 *Новая запись в салон!*\n\n"

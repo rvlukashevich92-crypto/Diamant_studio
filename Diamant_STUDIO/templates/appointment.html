@@ -4,38 +4,7 @@
 {% block title %} Онлайн-запись {% endblock %} 
 
 {% block content %}
-<style>
-    .yc-master-card {
-        border-bottom: 1px solid #ededed !important;
-    }
-    .yc-time-btn {
-        background-color: #eef2f5 !important;
-        border: none !important;
-        color: #1a1a1a !important;
-        font-weight: 500;
-        padding: 8px 16px !important;
-        border-radius: 6px !important;
-        transition: all 0.2s ease;
-    }
-    .yc-time-btn:hover {
-        background-color: #e2e7ec !important;
-    }
-    .yc-more-time {
-        background-color: #f4f6f8 !important;
-        color: #6c757d !important;
-    }
-    .yc-info-icon {
-        color: #6c757d;
-        cursor: pointer;
-        font-size: 1.1rem;
-        transition: color 0.2s;
-    }
-    .yc-info-icon:hover {
-        color: #1a1a1a;
-    }
-</style>
-
-<div class="container py-4" style="max-width: 650px;">
+<div class="container py-4" style="max-width: 600px;">
     <h2 class="mb-4 fw-bold">
         {% if is_edit %} Перенос записи на другое время {% else %} Запись на процедуру {% endif %}
     </h2>
@@ -48,105 +17,56 @@
             <div class="alert alert-danger">{{ form.non_field_errors }}</div>
         {% endif %}
 
-        <!-- СКРЫТЫЕ ПОЛЯ: Оригинальные выводы Django мы прячем, ими будет управлять JS -->
-        <div style="display: none;">
+        <!-- ВЫБОР МАСТЕРА -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Выбрать специалиста</label>
             {{ form.master }}
-            {{ form.appointment_time }}
+            {% if form.master.errors %}<div class="text-danger small">{{ form.master.errors }}</div>{% endif %}
         </div>
 
-        <!-- ================= ВИДЖЕТ ВЫБОРА МАСТЕРА И ВРЕМЕНИ ================= -->
-        <div class="card border-0 mb-4">
-            <h5 class="mb-4 fw-bold text-dark">Выбрать специалиста</h5>
-
-            <!-- Вариант: Любой специалист -->
-            <div class="yc-master-card card border-0 rounded-0 pb-3 mb-4">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                        <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 44px; height: 44px; background-color: #f4f6f8;">
-                            <i class="bi bi-people text-secondary fs-5"></i>
-                        </div>
-                        <div>
-                            <span class="fw-semibold text-dark">Любой специалист</span>
-                        </div>
-                    </div>
-                    <div>
-                        <input class="form-check-input rounded-circle fs-5" type="radio" name="yc_master_radio" value="" checked onclick="updateDjangoMaster('')">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Цикл по мастерам, которых бэкенд передает в контексте страницы -->
-            {% for m in form.master.field.queryset %}
-            <div class="yc-master-card card border-0 rounded-0 pb-4 mb-4">
-                <div class="d-flex align-items-center justify-content-between mb-3">
-                    <div class="d-flex align-items-center">
-                        {% if m.image %}
-                            <img src="{{ m.image.url }}" class="rounded-circle me-3" style="width: 46px; height: 46px; object-fit: cover;">
-                        {% else %}
-                            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white me-3" style="width: 46px; height: 46px;">
-                                {{ m.name|slice:":1" }}
-                            </div>
-                        {% endif %}
-                        <div>
-                            <h6 class="mb-0 fw-bold text-dark">{{ m.name }}</h6>
-                            <div class="text-muted small" style="font-size: 0.85rem;">{{ m.specialization|default:"Барбер" }}</div>
-                            <div class="text-warning" style="font-size: 0.75rem; letter-spacing: 1px;">
-                                ★ ★ ★ ★ ★ <span class="text-muted ms-1" style="font-size: 0.8rem;">7 отзывов</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex align-items-center gap-3">
-                        <i class="bi bi-info-circle yc-info-icon" title="Подробнее о мастере"></i>
-                        <input class="form-check-input rounded-circle fs-5" type="radio" name="yc_master_radio" id="yc_radio_{{ m.id }}" value="{{ m.id }}" onclick="updateDjangoMaster('{{ m.id }}')">
-                    </div>
-                </div>
-
-                <!-- Блок времени сегодняшнего дня -->
-                <div style="margin-left: 62px;">
-                    <p class="text-muted mb-2" style="font-size: 0.85rem;">Ближайшее время для записи <strong>сегодня</strong>:</p>
-                    <div class="d-flex flex-wrap gap-2 align-items-center">
-                        <button type="button" class="btn yc-time-btn btn-sm" onclick="selectTimeAndMaster('{{ m.id }}', '15:30')">15:30</button>
-                        <button type="button" class="btn yc-time-btn btn-sm" onclick="selectTimeAndMaster('{{ m.id }}', '16:00')">16:00</button>
-                        <button type="button" class="btn yc-time-btn yc-more-time btn-sm">Другое время</button>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        <!-- ================================================================= -->
-
-        <!-- ОСТАЛЬНЫЕ СТАНДАРТНЫЕ ПОЛЯ ТВОЕЙ ФОРМЫ -->
+        <!-- ВЫБОР УСЛУГИ -->
         <div class="mb-3">
             <label class="form-label fw-semibold">Услуга</label>
             {{ form.service }}
             {% if form.service.errors %}<div class="text-danger small">{{ form.service.errors }}</div>{% endif %}
         </div>
 
+        <!-- ДАТА ЗАПИСИ -->
         <div class="mb-3">
             <label class="form-label fw-semibold">Дата</label>
             {{ form.appointment_date }}
             {% if form.appointment_date.errors %}<div class="text-danger small">{{ form.appointment_date.errors }}</div>{% endif %}
         </div>
 
+        <!-- ВРЕМЯ ЗАПИСИ (СЛОТЫ) -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Доступное время</label>
+            {{ form.appointment_time }}
+            {% if form.appointment_time.errors %}<div class="text-danger small">{{ form.appointment_time.errors }}</div>{% endif %}
+        </div>
+
+        <!-- ПОЛ -->
         <div class="mb-3">
             <label class="form-label fw-semibold">Пол</label>
             {{ form.gender }}
             {% if form.gender.errors %}<div class="text-danger small">{{ form.gender.errors }}</div>{% endif %}
         </div>
 
+        <!-- ИМЯ КЛИЕНТА -->
         <div class="mb-3">
             <label class="form-label fw-semibold">Ваше имя</label>
             {{ form.client_name }}
             {% if form.client_name.errors %}<div class="text-danger small">{{ form.client_name.errors }}</div>{% endif %}
         </div>
 
+        <!-- ТЕЛЕФОН -->
         <div class="mb-3">
             <label class="form-label fw-semibold">Телефон</label>
             {{ form.client_phone }}
             {% if form.client_phone.errors %}<div class="text-danger small">{{ form.client_phone.errors }}</div>{% endif %}
         </div>
 
+        <!-- КОММЕНТАРИЙ -->
         <div class="mb-3">
             <label class="form-label fw-semibold">Комментарий</label>
             {{ form.comment }}
@@ -157,39 +77,57 @@
     </form>
 </div>
 
-<!-- JAVASCRIPT ДЛЯ СВЯЗИ ВИДЖЕТА И DJANGO ФОРМЫ -->
+<!-- АВТОМАТИЧЕСКАЯ ПОДГРУЗКА СЛОТОВ ВРЕМЕНИ -->
 <script>
-    // Поиск реальных скрытых полей Django (в зависимости от рендеринга ID может отличаться, проверяем по селекторам)
-    const djangoMasterSelect = document.querySelector('[name="master"]');
-    const djangoTimeInput = document.querySelector('[name="appointment_time"]');
+    const masterSelect = document.getElementById('master');
+    const serviceSelect = document.getElementById('service');
+    const dateInput = document.getElementById('appointment_date');
+    const timeSelect = document.getElementById('appointment_time');
 
-    // Функция срабатывает при ручном переключении радио-кнопки мастера
-    function updateDjangoMaster(masterId) {
-        if (djangoMasterSelect) {
-            djangoMasterSelect.value = masterId;
+    // Функция, которая делает AJAX-запрос к твоему контроллеру available_slots
+    async function loadAvailableSlots() {
+        const masterId = masterSelect.value;
+        const serviceId = serviceSelect.value;
+        const selectedDate = dateInput.value;
+
+        // Если хоть одно ключевое поле не выбрано, очищаем время и пишем заглушку
+        if (!masterId || !serviceId || !selectedDate) {
+            timeSelect.innerHTML = '<option value="">Сначала выберите мастера, услугу и дату</option>';
+            return;
+        }
+
+        timeSelect.innerHTML = '<option value="">⏳ Загрузка свободных слотов...</option>';
+
+        try {
+            // Стучимся на твой URL available_slots с параметрами
+            const response = await fetch("{% url 'available_slots' %}?master=" + masterId + "&service=" + serviceId + "&date=" + selectedDate);
+            const slots = await response.json();
+
+            timeSelect.innerHTML = '';
+
+            if (slots.length === 0) {
+                timeSelect.innerHTML = '<option value="">❌ Нет свободных слотов на этот день</option>';
+            } else {
+                timeSelect.innerHTML = '<option value="">-- Выберите время --</option>';
+                slots.forEach(slot => {
+                    const option = document.createElement('option');
+                    option.value = slot;
+                    option.textContent = slot;
+                    timeSelect.appendChild(option);
+                });
+            }
+        } catch (error) {
+            console.error('Ошибка загрузки слотов времени:', error);
+            timeSelect.innerHTML = '<option value="">⚠️ Ошибка загрузки времени</option>';
         }
     }
 
-    // Функция срабатывает при клике на серые кнопки времени
-    function selectTimeAndMaster(masterId, timeValue) {
-        // 1. Активируем радио-кнопку нужного мастера в интерфейсе
-        const radioButton = document.getElementById('yc_radio_' + masterId);
-        if (radioButton) {
-            radioButton.checked = true;
-        }
-        
-        // 2. Записываем ID мастера в скрытый селект Django
-        if (djangoMasterSelect) {
-            djangoMasterSelect.value = masterId;
-        }
-        
-        // 3. Записываем выбранное время в скрытое поле времени Django
-        if (djangoTimeInput) {
-            djangoTimeInput.value = timeValue;
-        }
+    // Вешаем слушатели событий: при изменении любого поля заново пересчитываем часы
+    masterSelect.addEventListener('change', loadAvailableSlots);
+    serviceSelect.addEventListener('change', loadAvailableSlots);
+    dateInput.addEventListener('change', loadAvailableSlots);
 
-        // Визуальный индикатор для проверки (можно убрать)
-        console.log(`Выбран мастер ID: ${masterId}, время: ${timeValue}`);
-    }
+    // Первичный вызов при загрузке страницы, если данные уже переданы (например, GET-параметром)
+    document.addEventListener('DOMContentLoaded', loadAvailableSlots);
 </script>
 {% endblock %}

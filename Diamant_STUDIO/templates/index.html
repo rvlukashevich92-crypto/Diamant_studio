@@ -25,14 +25,14 @@ Diamant Studio
     </p>
 
     <img
-        src="{% static 'images/salon.jpg' %}"
+        src="{% static 'image/salon.jpg' %}"
         class="img-fluid rounded my-4"
         alt="Diamant Studio"
     >
 
     <br>
 
-    <a href="/appointment/" class="btn btn-primary btn-lg">
+    <a href="{% url 'appointment_create' %} class="btn btn-primary btn-lg">
         Записаться онлайн
     </a>
 
@@ -121,7 +121,7 @@ Diamant Studio
 
                 <!-- ДОБАВЛЕНА КНОПКА ЗАПИСИ ДЛЯ КОНКРЕТНОЙ УСЛУГИ -->
                 <div class="mt-3">
-                    <a href="/appointment/?service_id={{ service.id }}" class="btn btn-outline-primary w-100">
+                   <a href="{% url 'appointment_create' %}?service_id={{ service.id }}" class="btn btn-outline-primary w-100">
                         Записаться
                     </a>
                 </div>
@@ -182,7 +182,7 @@ Diamant Studio
 
                 <!-- ДОБАВЛЕНА КНОПКА ЗАПИСИ К КОНКРЕТНОМУ МАСТЕРУ -->
                 <div class="mt-3">
-                    <a href="/appointment/?master_id={{ master.id }}" class="btn btn-primary w-100">
+                    <a href="{% url 'appointment_create' %}?master_id={{ master.id }}" class="btn btn-primary w-100">
                         Выбрать мастера
                     </a>
                 </div>

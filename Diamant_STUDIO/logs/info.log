@@ -2029,3 +2029,637 @@ django.urls.exceptions.NoReverseMatch: Reverse for 'master' not found. 'master' 
 [31.08.2026 22:05:46] INFO [django.server:249] "GET / HTTP/1.0" 200 4576
 [31.08.2026 22:06:02] INFO [django.server:249] "GET /appointment/ HTTP/1.0" 200 8617
 [31.08.2026 22:06:06] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 1824
+[31.08.2026 22:06:07] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 1824
+[31.08.2026 22:09:38] INFO [django.server:249] "GET / HTTP/1.0" 200 4576
+[31.08.2026 22:16:12] INFO [django.server:249] "GET / HTTP/1.0" 200 4576
+[08.09.2026 20:51:33] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[08.09.2026 20:51:34] ERROR [django.request:249] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/core/views.py", line 12, in index
+    return render(
+          ^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for '/' not found. '/' is not a valid view function or pattern name.
+[08.09.2026 20:51:34] ERROR [django.server:249] "GET / HTTP/1.0" 500 144583
+[08.09.2026 20:51:35] ERROR [django.request:249] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/core/views.py", line 12, in index
+    return render(
+          ^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for '/' not found. '/' is not a valid view function or pattern name.
+[08.09.2026 20:51:35] ERROR [django.server:249] "GET / HTTP/1.0" 500 144439
+[08.09.2026 20:51:35] WARNING [django.request:249] Not Found: /favicon.ico
+[08.09.2026 20:51:35] WARNING [django.server:249] "GET /favicon.ico HTTP/1.0" 404 5513
+[08.09.2026 20:53:34] ERROR [django.request:249] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/core/views.py", line 12, in index
+    return render(
+          ^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'services' not found. 'services' is not a valid view function or pattern name.
+[08.09.2026 20:53:34] ERROR [django.server:249] "GET / HTTP/1.0" 500 145147
+[08.09.2026 20:53:35] ERROR [django.request:249] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/core/views.py", line 12, in index
+    return render(
+          ^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'services' not found. 'services' is not a valid view function or pattern name.
+[08.09.2026 20:53:35] ERROR [django.server:249] "GET / HTTP/1.0" 500 145147
+[08.09.2026 20:58:37] ERROR [django.request:249] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/core/views.py", line 12, in index
+    return render(
+          ^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'appointment' not found. 'appointment' is not a valid view function or pattern name.
+[08.09.2026 20:58:37] ERROR [django.server:249] "GET / HTTP/1.0" 500 159491
+[08.09.2026 20:58:39] ERROR [django.request:249] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/core/views.py", line 12, in index
+    return render(
+          ^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'appointment' not found. 'appointment' is not a valid view function or pattern name.
+[08.09.2026 20:58:39] ERROR [django.server:249] "GET / HTTP/1.0" 500 159491
+[08.09.2026 20:59:43] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:00:36] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:00:41] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 1816
+[08.09.2026 21:00:43] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 1816
+[08.09.2026 21:01:13] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:01:16] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:01:16] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:01:17] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:05:51] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:05:53] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:05:53] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:05:54] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:05:54] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:05:54] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:05:54] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:06:10] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:08] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:10] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:10] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:11] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:11] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:11] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:12] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:12] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:13] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:22] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:22] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:22] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:23] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:23] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:23] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:25] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:25] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:13:25] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:14:33] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:14:33] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:14:34] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:14:34] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:14:34] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:14:34] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:14:35] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:14:35] INFO [django.server:249] "GET / HTTP/1.0" 200 4550
+[08.09.2026 21:16:43] INFO [django.server:249] "GET / HTTP/1.0" 200 6090
+[08.09.2026 21:16:46] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 3339
+[08.09.2026 21:16:47] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 3339
+[08.09.2026 21:19:45] INFO [django.server:249] "GET / HTTP/1.0" 200 6090
+[08.09.2026 21:19:46] INFO [django.server:249] "GET / HTTP/1.0" 200 6090
+[08.09.2026 21:19:58] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 3339
+[08.09.2026 21:19:59] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 3339
+[08.09.2026 21:20:00] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 3339
+[08.09.2026 21:20:00] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 3339
+[08.09.2026 21:20:00] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 3339
+[08.09.2026 21:20:02] INFO [django.server:249] "GET / HTTP/1.0" 200 6090
+[08.09.2026 21:20:15] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 3339
+[08.09.2026 21:20:16] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 3339
+[08.09.2026 21:20:16] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 3339
+[08.09.2026 21:20:16] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 3339
+[08.09.2026 21:20:16] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 3339
+[08.09.2026 21:20:33] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 3339
+[08.09.2026 21:24:44] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 3339
+[08.09.2026 21:24:44] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 3339
+[08.09.2026 21:24:45] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 3339
+[08.09.2026 21:24:45] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 3339
+[08.09.2026 21:24:45] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 3339
+[08.09.2026 21:48:08] INFO [django.server:249] "GET / HTTP/1.0" 200 6272
+[09.09.2026 20:43:38] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[09.09.2026 20:43:39] INFO [django.server:249] "GET / HTTP/1.0" 200 6272
+[09.09.2026 20:44:02] INFO [django.server:249] "GET / HTTP/1.0" 200 6272
+[09.09.2026 20:45:12] INFO [django.server:249] "GET / HTTP/1.0" 200 6272
+[09.09.2026 20:45:13] INFO [django.server:249] "GET / HTTP/1.0" 200 6272
+[09.09.2026 20:47:52] INFO [django.server:249] "GET / HTTP/1.0" 200 6272
+[09.09.2026 20:53:12] INFO [django.server:249] "GET / HTTP/1.0" 200 6272
+[09.09.2026 20:57:09] INFO [django.server:249] "GET / HTTP/1.0" 200 6272
+[09.09.2026 21:10:59] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 3842
+[09.09.2026 21:11:05] INFO [django.server:249] "GET / HTTP/1.0" 200 6593
+[09.09.2026 21:11:11] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 3842
+[09.09.2026 21:11:15] INFO [django.server:249] "GET / HTTP/1.0" 200 6593
+[09.09.2026 21:11:16] INFO [django.server:249] "GET / HTTP/1.0" 200 6593
+[09.09.2026 21:11:16] INFO [django.server:249] "GET / HTTP/1.0" 200 6593
+[09.09.2026 21:11:16] INFO [django.server:249] "GET / HTTP/1.0" 200 6593
+[09.09.2026 21:11:17] INFO [django.server:249] "GET / HTTP/1.0" 200 6593
+[09.09.2026 21:11:17] INFO [django.server:249] "GET / HTTP/1.0" 200 6593
+[09.09.2026 21:11:17] INFO [django.server:249] "GET / HTTP/1.0" 200 6593
+[09.09.2026 21:12:34] INFO [django.server:249] "GET /admin HTTP/1.0" 301 0
+[09.09.2026 21:12:34] INFO [django.server:249] "GET /admin/ HTTP/1.0" 302 0
+[09.09.2026 21:12:34] INFO [django.server:249] "GET /admin/login/?next=/admin/ HTTP/1.0" 200 4262
+[09.09.2026 21:12:34] WARNING [django.request:249] Not Found: /favicon.ico
+[09.09.2026 21:12:34] WARNING [django.server:249] "GET /favicon.ico HTTP/1.0" 404 5513
+[09.09.2026 21:12:36] INFO [django.server:249] "POST /admin/login/?next=/admin/ HTTP/1.0" 200 4520
+[09.09.2026 21:12:44] INFO [django.server:249] "POST /admin/login/?next=/admin/ HTTP/1.0" 200 4520
+[09.09.2026 21:12:52] INFO [django.server:249] "POST /admin/login/?next=/admin/ HTTP/1.0" 200 4520
+[09.09.2026 21:12:53] INFO [django.server:249] "POST /admin/login/?next=/admin/ HTTP/1.0" 200 4520
+[09.09.2026 21:12:54] INFO [django.server:249] "POST /admin/login/?next=/admin/ HTTP/1.0" 200 4520
+[09.09.2026 21:12:54] INFO [django.server:249] "POST /admin/login/?next=/admin/ HTTP/1.0" 200 4520
+[09.09.2026 21:13:24] INFO [django.server:249] "POST /admin/login/?next=/admin/ HTTP/1.0" 302 0
+[09.09.2026 21:13:24] INFO [django.server:249] "GET /admin/ HTTP/1.0" 200 16290
+[09.09.2026 21:13:36] INFO [django.server:249] "GET /admin/services/service/add/ HTTP/1.0" 200 17797
+[09.09.2026 21:13:36] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[09.09.2026 21:14:46] INFO [django.server:249] "POST /admin/services/service/add/ HTTP/1.0" 302 0
+[09.09.2026 21:14:46] INFO [django.server:249] "GET /admin/services/service/add/ HTTP/1.0" 200 18113
+[09.09.2026 21:14:46] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[09.09.2026 21:15:13] INFO [django.server:249] "POST /admin/services/service/add/ HTTP/1.0" 302 0
+[09.09.2026 21:15:13] INFO [django.server:249] "GET /admin/services/service/add/ HTTP/1.0" 200 18111
+[09.09.2026 21:15:14] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[09.09.2026 21:16:00] INFO [django.server:249] "POST /admin/services/service/add/ HTTP/1.0" 302 0
+[09.09.2026 21:16:00] INFO [django.server:249] "GET /admin/services/service/add/ HTTP/1.0" 200 18132
+[09.09.2026 21:16:00] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[09.09.2026 21:16:23] INFO [django.server:249] "POST /admin/services/service/add/ HTTP/1.0" 302 0
+[09.09.2026 21:16:23] INFO [django.server:249] "GET /admin/services/service/4/change/ HTTP/1.0" 200 18459
+[09.09.2026 21:16:23] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[09.09.2026 21:16:29] INFO [django.server:249] "GET /admin/services/service/ HTTP/1.0" 200 19905
+[09.09.2026 21:16:29] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[13.09.2026 15:09:41] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 15:10:13] INFO [django.utils.autoreload:265] /app/services/migrations/0002_auto_20260913_1509.py changed, reloading.
+[13.09.2026 15:10:14] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 15:10:23] INFO [django.utils.autoreload:265] /app/services/migrations/0002_auto_20260913_1509.py changed, reloading.
+[13.09.2026 15:10:24] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 15:11:22] INFO [django.server:249] "GET / HTTP/1.0" 200 15669
+[13.09.2026 15:11:27] INFO [django.server:249] "GET /login/ HTTP/1.0" 200 4934
+[13.09.2026 15:11:43] INFO [django.server:249] "POST /login/ HTTP/1.0" 302 0
+[13.09.2026 15:11:43] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 4897
+[13.09.2026 15:11:47] INFO [django.server:249] "GET / HTTP/1.0" 200 15669
+[13.09.2026 15:26:18] INFO [django.server:249] "GET / HTTP/1.0" 200 15669
+[13.09.2026 15:26:22] INFO [django.server:249] "GET / HTTP/1.0" 200 15669
+[13.09.2026 15:26:22] INFO [django.server:249] "GET / HTTP/1.0" 200 15669
+[13.09.2026 15:26:22] INFO [django.server:249] "GET / HTTP/1.0" 200 18156
+[13.09.2026 15:26:23] INFO [django.server:249] "GET / HTTP/1.0" 200 18156
+[13.09.2026 15:27:07] INFO [django.server:249] "GET /admin HTTP/1.0" 301 0
+[13.09.2026 15:27:07] INFO [django.server:249] "GET /admin/ HTTP/1.0" 200 16290
+[13.09.2026 15:27:07] WARNING [django.request:249] Not Found: /favicon.ico
+[13.09.2026 15:27:07] WARNING [django.server:249] "GET /favicon.ico HTTP/1.0" 404 5513
+[13.09.2026 15:27:18] INFO [django.server:249] "GET /admin/masters/master/ HTTP/1.0" 200 20347
+[13.09.2026 15:27:18] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[13.09.2026 15:27:22] INFO [django.server:249] "GET /admin/masters/master/1/change/ HTTP/1.0" 200 29041
+[13.09.2026 15:27:22] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[13.09.2026 15:27:40] INFO [django.server:249] "GET /admin/masters/master/1/change/ HTTP/1.0" 200 29041
+[13.09.2026 15:27:48] INFO [django.server:249] "GET /admin/masters/master/1/change/ HTTP/1.0" 200 29041
+[13.09.2026 15:27:56] INFO [django.server:249] "GET /admin/masters/master/1/change/ HTTP/1.0" 200 29041
+[13.09.2026 15:30:16] INFO [django.server:249] "POST /admin/masters/master/1/change/ HTTP/1.0" 302 0
+[13.09.2026 15:30:16] INFO [django.server:249] "GET /admin/masters/master/ HTTP/1.0" 200 20585
+[13.09.2026 15:30:16] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[13.09.2026 15:30:31] INFO [django.server:249] "GET / HTTP/1.0" 200 18500
+[13.09.2026 15:30:41] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 6229
+[13.09.2026 15:30:43] INFO [django.server:249] "GET /masters/1/ HTTP/1.0" 200 6508
+[13.09.2026 15:30:53] INFO [django.server:249] "GET /appointment/?master=1 HTTP/1.0" 200 18025
+[13.09.2026 15:32:42] INFO [django.server:249] "POST /appointment/?master=1 HTTP/1.0" 200 18159
+[13.09.2026 15:32:52] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 10393
+[13.09.2026 15:32:53] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 4897
+[13.09.2026 15:32:58] INFO [django.server:249] "GET /appointment/ HTTP/1.0" 200 18425
+[13.09.2026 15:38:07] INFO [django.server:249] "GET /admin/ HTTP/1.0" 200 16705
+[13.09.2026 15:38:11] INFO [django.server:249] "GET /admin/masters/master/ HTTP/1.0" 200 20347
+[13.09.2026 15:38:11] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[13.09.2026 15:38:14] INFO [django.server:249] "GET /admin/masters/master/3/change/ HTTP/1.0" 200 28988
+[13.09.2026 15:38:14] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[13.09.2026 15:38:21] INFO [django.server:249] "POST /admin/masters/master/3/change/ HTTP/1.0" 302 0
+[13.09.2026 15:38:21] INFO [django.server:249] "GET /admin/masters/master/add/ HTTP/1.0" 200 28256
+[13.09.2026 15:38:21] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[13.09.2026 15:38:26] INFO [django.server:249] "GET /admin/masters/master/ HTTP/1.0" 200 20347
+[13.09.2026 15:38:26] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[13.09.2026 15:38:27] INFO [django.server:249] "GET /admin/masters/master/2/change/ HTTP/1.0" 200 28938
+[13.09.2026 15:38:27] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[13.09.2026 15:38:47] INFO [django.server:249] "POST /admin/masters/master/2/change/ HTTP/1.0" 302 0
+[13.09.2026 15:38:47] INFO [django.server:249] "GET /admin/masters/master/ HTTP/1.0" 200 20575
+[13.09.2026 15:38:47] INFO [django.server:249] "GET /admin/jsi18n/ HTTP/1.0" 200 16379
+[13.09.2026 15:38:58] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:39:08] INFO [django.server:249] "GET /appointment/?master_id=2 HTTP/1.0" 200 18057
+[13.09.2026 15:39:42] INFO [django.server:249] "GET /appointment/?service_id=6 HTTP/1.0" 200 18057
+[13.09.2026 15:51:36] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:51:38] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:51:38] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:51:39] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:51:39] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:51:40] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:51:40] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:51:40] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:51:41] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:51:41] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:51:42] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:51:42] INFO [django.server:249] "GET / HTTP/1.0" 200 19124
+[13.09.2026 15:54:46] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[13.09.2026 15:55:04] INFO [django.server:249] "GET /appointment/?master_id=2 HTTP/1.0" 200 18057
+[13.09.2026 15:55:17] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 10393
+[13.09.2026 15:55:19] INFO [django.server:249] "GET /appointment/?service=2 HTTP/1.0" 200 18025
+[13.09.2026 15:55:39] INFO [django.server:249] "GET /appointment/?master_id=3 HTTP/1.0" 200 18085
+[13.09.2026 15:55:45] INFO [django.server:249] "GET /appointment/?master_id=3 HTTP/1.0" 200 18085
+[13.09.2026 16:04:52] INFO [django.server:249] "GET /appointment/?master_id=3 HTTP/1.0" 200 20397
+[13.09.2026 16:04:54] INFO [django.server:249] "GET /appointment/?master_id=3 HTTP/1.0" 200 20397
+[13.09.2026 16:05:01] INFO [django.server:249] "GET /appointment/?service_id=2 HTTP/1.0" 200 20102
+[13.09.2026 16:06:37] INFO [django.server:249] "GET /appointment/?service=4 HTTP/1.0" 200 20134
+[13.09.2026 16:09:54] INFO [django.server:249] "GET /appointment/?service=4 HTTP/1.0" 200 7430
+[13.09.2026 16:09:55] INFO [django.server:249] "GET /appointment/?service=4 HTTP/1.0" 200 7430
+[13.09.2026 16:09:55] INFO [django.server:249] "GET /appointment/?service=4 HTTP/1.0" 200 7430
+[13.09.2026 16:09:55] INFO [django.server:249] "GET /appointment/?service=4 HTTP/1.0" 200 7430
+[13.09.2026 16:10:03] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[13.09.2026 16:10:06] INFO [django.server:249] "GET /appointment/?service_id=2 HTTP/1.0" 200 7398
+[13.09.2026 16:10:22] INFO [django.server:249] "GET /appointment/?master_id=2 HTTP/1.0" 200 7430
+[13.09.2026 16:11:48] INFO [django.server:249] "GET /appointment/?master_id=2 HTTP/1.0" 200 7430
+[13.09.2026 16:11:49] INFO [django.server:249] "GET /appointment/?master_id=2 HTTP/1.0" 200 7430
+[13.09.2026 16:11:49] INFO [django.server:249] "GET /appointment/?master_id=2 HTTP/1.0" 200 7430
+[13.09.2026 16:11:49] INFO [django.server:249] "GET /appointment/?master_id=2 HTTP/1.0" 200 7430
+[13.09.2026 16:17:44] INFO [django.utils.autoreload:265] /app/appoinments/forms.py changed, reloading.
+[13.09.2026 16:17:45] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 16:17:59] INFO [django.server:249] "GET /appointment/ HTTP/1.0" 200 7809
+[13.09.2026 16:18:32] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 80, in appointment_create
+    site_url = request.build_absolute_url(reverse('index'))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'build_absolute_url'. Did you mean: 'build_absolute_uri'?
+[13.09.2026 16:18:32] ERROR [django.server:249] "POST /appointment/ HTTP/1.0" 500 66472
+[13.09.2026 16:21:19] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[13.09.2026 16:21:21] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 16:21:45] INFO [django.server:249] "GET /appointment/ HTTP/1.0" 200 7809
+[13.09.2026 16:22:05] INFO [django.server:249] "POST /appointment/ HTTP/1.0" 302 0
+[13.09.2026 16:22:05] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[13.09.2026 16:22:08] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 9101
+[13.09.2026 16:24:02] INFO [django.server:249] "GET /appointment/?master_id=3 HTTP/1.0" 200 7469
+[13.09.2026 16:26:41] INFO [django.utils.autoreload:265] /app/appoinments/forms.py changed, reloading.
+[13.09.2026 16:26:42] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 16:26:48] INFO [django.utils.autoreload:265] /app/appoinments/forms.py changed, reloading.
+[13.09.2026 16:26:48] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 16:26:55] INFO [django.utils.autoreload:265] /app/appoinments/forms.py changed, reloading.
+[13.09.2026 16:26:56] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[13.09.2026 16:28:31] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[13.09.2026 16:28:36] INFO [django.server:249] "GET /appointment/?master_id=2 HTTP/1.0" 200 10273
+[13.09.2026 16:28:44] WARNING [django.request:249] Not Found: /appointment/available_slots/
+[13.09.2026 16:28:44] WARNING [django.server:249] "GET /appointment/available_slots/?master=2&service=4&date=2026-09-14 HTTP/1.0" 404 6294
+[13.09.2026 16:28:53] WARNING [django.request:249] Not Found: /appointment/available_slots/
+[13.09.2026 16:28:53] WARNING [django.server:249] "GET /appointment/available_slots/?master=2&service=4&date=2026-09-13 HTTP/1.0" 404 6294
+[13.09.2026 16:28:57] WARNING [django.request:249] Not Found: /appointment/available_slots/
+[13.09.2026 16:28:57] WARNING [django.server:249] "GET /appointment/available_slots/?master=2&service=5&date=2026-09-13 HTTP/1.0" 404 6294
+[13.09.2026 16:29:02] WARNING [django.request:249] Not Found: /appointment/available_slots/
+[13.09.2026 16:29:02] WARNING [django.server:249] "GET /appointment/available_slots/?master=2&service=5&date=2026-09-22 HTTP/1.0" 404 6294
+[13.09.2026 16:29:11] INFO [django.server:249] "GET /appointment/ HTTP/1.0" 200 10641
+[13.09.2026 16:29:22] WARNING [django.request:249] Not Found: /appointment/available_slots/
+[13.09.2026 16:29:22] WARNING [django.server:249] "GET /appointment/available_slots/?master=3&service=2&date=2026-09-14 HTTP/1.0" 404 6294
+[13.09.2026 16:31:55] INFO [django.server:249] "GET /appointment/ HTTP/1.0" 200 10651
+[13.09.2026 16:32:05] INFO [django.server:249] "GET /appointment/available-slots/?master=1&service=9&date=2026-09-18 HTTP/1.0" 200 162
+[13.09.2026 16:32:25] INFO [django.server:249] "POST /appointment/ HTTP/1.0" 200 10602
+[13.09.2026 16:32:31] INFO [django.server:249] "GET /appointment/available-slots/?master=1&service=2&date=2026-09-18 HTTP/1.0" 200 162
+[13.09.2026 16:32:41] INFO [django.server:249] "GET /appointment/?service_id=6 HTTP/1.0" 200 10283
+[13.09.2026 16:32:48] INFO [django.server:249] "GET /appointment/available-slots/?master=2&service=6&date=2026-09-16 HTTP/1.0" 200 324
+[13.09.2026 16:33:13] INFO [django.server:249] "POST /appointment/?service_id=6 HTTP/1.0" 302 0
+[13.09.2026 16:33:13] INFO [django.server:249] "GET / HTTP/1.0" 200 19123

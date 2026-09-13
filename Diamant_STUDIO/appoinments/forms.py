@@ -42,11 +42,10 @@ class ApplicationForm(forms.ModelForm):
 
             "appointment_time": forms.Select(
                 attrs={
-                    "class": "form-select",
+                    "class": "form-control", 
                     "id": "appointment_time",
                 }
             ),
-
             "gender": forms.Select(
                 attrs={"class": "form-select",
                        "id": "gender",
