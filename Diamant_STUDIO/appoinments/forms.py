@@ -1,10 +1,16 @@
+import re
 from django import forms
 from .models import Application
 from django.utils import timezone
-from datetime import datetime, time
+from datetime import datetime, time, timedelta
+
 
 
 class ApplicationForm(forms.ModelForm):
+    appointment_time = forms.TimeField(
+                    input_formats=['%H:%M'],
+                    widget=forms.Select(attrs={"class": "form-control", "id": "appointment_time",})
+                    )   
     class Meta:
         model = Application
         fields = [
@@ -39,13 +45,7 @@ class ApplicationForm(forms.ModelForm):
                     "id": "appointment_date",
                 }
             ),
-
-            "appointment_time": forms.Select(
-                attrs={
-                    "class": "form-control", 
-                    "id": "appointment_time",
-                }
-            ),
+            
             "gender": forms.Select(
                 attrs={"class": "form-select",
                        "id": "gender",
@@ -101,40 +101,57 @@ class ApplicationForm(forms.ModelForm):
         cleaned_data = super().clean()
 
         master = cleaned_data.get("master")
+        service = cleaned_data.get("service")
         appointment_date = cleaned_data.get("appointment_date")
         appointment_time = cleaned_data.get("appointment_time")
 
-        if appointment_date and appointment_time:
+        # 1. Жесткая проверка: если чего-то нет — сразу прерываемся
+        if not master or not service or not appointment_date or not appointment_time:
+            raise forms.ValidationError("Необходимо заполнить все обязательные поля для записи.")
 
-            selected = datetime.combine(
-                appointment_date,
-                appointment_time,
+        # 2. Базовая проверка на прошедшее время
+        selected = datetime.combine(appointment_date, appointment_time)
+        if timezone.is_naive(selected):
+            selected = timezone.make_aware(selected)
+
+        if selected < timezone.now():
+            raise forms.ValidationError("Нельзя записаться на прошедшее время.")
+
+        # 3. Вычисляем интервалы (теперь мы на 100% уверены, что все переменные существуют)
+        new_start = datetime.combine(appointment_date, appointment_time)
+        new_end = new_start + timedelta(minutes=service.duration)
+        closing_time = time(20, 0)
+
+        # 4. Проверка на время закрытия салона
+        if new_end.time() > closing_time or new_end.date() > appointment_date:
+            raise forms.ValidationError(
+                f"Выбранная услуга длится {service.duration} мин. "
+                f"Мастер закончит работу в {new_end.strftime('%H:%M')}, но салон закрывается в {closing_time.strftime('%H:%M')}."
             )
 
-            if timezone.is_naive(selected):
-                selected = timezone.make_aware(selected)
+        # 5. ПРОДВИНУТАЯ ВАЛИДАЦИЯ: Проверка пересечения интервалов записей (Овербукинг)
+        existing_appointments = Application.objects.select_for_update().filter(
+            master=master,
+            appointment_date=appointment_date
+        ).select_related('service')
 
-            if selected < timezone.now():
+        # Исключаем текущую запись при редактировании (переносе времени)
+        if self.instance and self.instance.pk:
+            existing_appointments = existing_appointments.exclude(pk=self.instance.pk)
+
+        for app in existing_appointments:
+            current_start = datetime.combine(app.appointment_date, app.appointment_time)
+            current_end = current_start + timedelta(minutes=app.service.duration)
+
+            if new_start < current_end and new_end > current_start:
+                formatted_start = app.appointment_time.strftime('%H:%M')
+                formatted_end = current_end.strftime('%H:%M')
+                
                 raise forms.ValidationError(
-                    "Нельзя записаться на прошедшее время."
+                    f"Внимание: Мастер {master.name} в это время занят. "
+                    f"Слот с {formatted_start} по {formatted_end} забронирован под услугу '{app.service.name}'."
                 )
 
-        if (
-            master
-            and appointment_date
-            and appointment_time
-        ):
-            exists = Application.objects.filter(
-                master=master,
-                appointment_date=appointment_date,
-                appointment_time=appointment_time,
-            ).exists()
-
-            if exists:
-                raise forms.ValidationError(
-                    "Это время уже занято."
-                )
-    
         return cleaned_data
     
     def __init__(self, *args, **kwargs):
@@ -157,7 +174,22 @@ class ApplicationForm(forms.ModelForm):
                 from services.models import Service
                 self.fields["service"].queryset = Service.objects.all()
         else:
-            # ИСПРАВЛЕНО: Вместо .none() разрешаем показ всех услуг, 
+           
             # чтобы пользователь мог выбрать услугу до выбора мастера
             from services.models import Service
             self.fields["service"].queryset = Service.objects.all()
+
+    def clean_client_phone(self):
+        client_phone = self.cleaned_data.get("client_phone")
+        clean_phone = re.sub(r'[\s\-\(\)]', '', client_phone)
+        phone_regex = r'^(?:\+375|375|80)(?:25|29|33|44|15)\d{7}$'
+    
+        if not re.match(phone_regex, clean_phone):
+            raise forms.ValidationError("Неверный формат номера телефона Республики Беларусь.")
+        
+        if clean_phone.startswith('80'):
+            clean_phone = '+375' + clean_phone[2:]
+        elif not clean_phone.startswith('+'):
+            clean_phone = '+' + clean_phone
+        
+        return clean_phone

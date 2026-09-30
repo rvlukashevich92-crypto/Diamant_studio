@@ -1,83 +1,95 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}Личный кабинет{% endblock %}
+{% block title %}Личный кабинет — Diamant Studio{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="row">
-        <!-- Левая колонка: Профиль клиента -->
-        <div class="col-md-4">
-            <div class="card shadow-sm mb-4">
-                <div class="card-body text-center">
-                    <!-- Выводит имя или юзернейм на основе вашего __str__ -->
-                    <h5 class="card-title mb-1">Привет, {{ request.user }}!</h5>
-                    <p class="text-muted small">@{{ request.user.username }}</p>
-                    {% if request.user.telegram_id %}
-                        <p class="text-success small">✓ Telegram подключен</p>
-                    {% endif %}
-                </div>
+<div class="container py-4" style="max-width: 800px;">
+    <!-- Блок приветствия -->
+    <div class="card bg-dark text-white p-4 rounded-4 mb-4 border-0 shadow-sm">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+                <h2 class="fw-bold mb-1">Приветствуем, {{ request.user.username }}!</h2>
+                <p class="text-white-50 mb-0">Добро пожаловать в ваш личный кабинет Diamant Studio.</p>
+            </div>
+            <div>
+                <span class="badge bg-primary px-3 py-2 rounded-pill fw-semibold">Клиент салона</span>
             </div>
         </div>
-        
-        <!-- Правая колонка: Список записей -->
-        <div class="col-md-8">
-            <h3 class="mb-4">Мои записи на процедуры</h3>
-            
-            {% if appointments %}
-                <div class="table-responsive shadow-sm rounded">
-                   <table class="table table-hover align-middle bg-white mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Мастер</th>
-                                <th>Услуга</th>
-                                <th>Дата и время</th>
-                                <th>Статус</th>
-                                <th>Действие</th> <!-- Новая колонка -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for app in appointments %}
-                                <tr>
-                                    <td><strong>{{ app.master.name }}</strong></td>
-                                    <td>{{ app.service.name }}</td>
-                                    <td>{{ app.appointment_date|date:"d.m.Y" }} в {{ app.appointment_time|time:"H:i" }}</td>
-                                    <td>
-                                        {% if app.appointment_date >= today %}
-                                            <span class="badge bg-success">Ожидается</span>
-                                        {% else %}
-                                            <span class="badge bg-secondary">Завершен</span>
-                                        {% endif %}
-                                    </td>
-                                    <td>
-    <!-- Кнопки управления активны только для будущих записей -->
-    {% if app.appointment_date >= today %}
-        <div class="btn-group" role="group">
-            <!-- Кнопка Изменить -->
-            <a href="{% url 'appointment_update' app.pk %}" class="btn btn-sm btn-outline-primary me-2">
-                Изменить
-            </a>
-            
-            <!-- Ваша существующая кнопка Отменить -->
-            <form method="POST" action="{% url 'appointment_cancel' app.pk %}" onsubmit="return confirm('Вы уверены, что хотите отменить запись к мастеру {{ app.master.name }}?');" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-sm btn-outline-danger">Отменить</button>
-            </form>
+    </div>
+
+    <h4 class="fw-bold text-dark mb-4">История и актуальные записи</h4>
+
+    {% if appointments %}
+        <div class="row g-3">
+            {% for app in appointments %}
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
+                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                            <!-- Левая часть: Дата и Время -->
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 text-center" style="min-width: 80px;">
+                                    <div class="fw-bold fs-4 lh-1">{{ app.appointment_time|time:"H:i" }}</div>
+                                    <small class="text-uppercase fw-semibold" style="font-size: 0.75rem;">{{ app.appointment_date|date:"d M" }}</small>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold text-dark mb-1">{{ app.service.name }}</h5>
+                                    <p class="text-muted mb-0 small">
+                                        Мастер: <strong>{{ app.master.name }}</strong> ({{ app.master.specialization }})
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Правая часть: Цена, статус и динамические действия -->
+                            <div class="text-lg-end d-flex flex-column align-items-lg-end gap-2">
+                                <span class="fw-bold text-dark fs-5">{{ app.service.price }} BYN</span>
+                                
+                                <!-- Проверяем: если запись еще предстоит (дата больше или равна сегодня) -->
+                                {% if app.appointment_date >= today %}
+                                    <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25">Предстоит</span>
+                                    
+                                    <!-- КНОПКИ ДЕЙСТВИЯ -->
+                                    <div class="d-flex gap-2 mt-2">
+                                        <!-- Перенос (GET-редирект на твой appointment_update) -->
+                                        <a href="{% url 'appointment_update' app.pk %}" class="btn btn-outline-secondary btn-sm rounded-2">
+                                            Перенести
+                                        </a>
+                                        
+                                        <!-- Отмена (POST-форма для безопасности csrf) -->
+                                        <form method="post" action="{% url 'appointment_cancel' app.pk %}" onsubmit="return confirm('Вы уверены, что хотите отменить эту запись?');" class="d-inline">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-outline-danger btn-sm rounded-2">
+                                                Отменить
+                                            </button>
+                                        </form>
+                                    </div>
+                                {% else %}
+                                    <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25">Завершена</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        {% if app.comment %}
+                            <div class="mt-3 p-2 bg-light rounded-2 border-start border-primary border-3 small text-muted">
+                                <strong>Ваш комментарий:</strong> {{ app.comment }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     {% else %}
-        <span class="text-muted small">—</span>
-    {% endif %}
-</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            {% else %}
-                <div class="alert alert-info" role="alert">
-                    У вас пока нет ни одной записи. <a href="{% url 'appointment_create' %}" class="alert-link">Записаться прямо сейчас</a>.
-                </div>
-            {% endif %}
+        <!-- Заглушка -->
+        <div class="card border-0 shadow-sm rounded-4 p-5 text-center bg-white">
+            <div class="text-muted mb-3">
+                <i class="bi bi-calendar-x fs-1"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-2">У вас пока нет активных записей</h5>
+            <p class="text-muted small mb-4">Выберите подходящую процедуру и запишитесь к нашим лучшим специалистам.</p>
+            <a href="{% url 'appointment_create' %}" class="btn btn-primary px-4 fw-semibold shadow-sm">
+                Записаться на процедуру
+            </a>
         </div>
-    </div>
+    {% endif %}
 </div>
 {% endblock %}

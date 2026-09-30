@@ -2976,3 +2976,473 @@ django.core.exceptions.ImproperlyConfigured: Could not resolve URL for hyperlink
 [13.09.2026 20:57:13] INFO [django.server:249] "GET /api/masters/1 HTTP/1.0" 301 0
 [13.09.2026 20:57:13] INFO [django.server:249] "GET /api/masters/1/ HTTP/1.0" 200 11654
 [13.09.2026 20:57:19] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10298
+[14.09.2026 18:16:32] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.09.2026 18:16:34] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[14.09.2026 18:16:42] INFO [django.server:249] "GET /appointment/ HTTP/1.0" 200 10651
+[14.09.2026 18:17:03] INFO [django.server:249] "GET /appointment/ HTTP/1.0" 200 10651
+[14.09.2026 18:17:33] INFO [django.server:249] "GET /appointment/available-slots/?master=1&service=2&date=2026-09-15 HTTP/1.0" 200 162
+[14.09.2026 18:17:53] INFO [django.server:249] "GET /appointment/available-slots/?master=1&service=4&date=2026-09-15 HTTP/1.0" 200 144
+[14.09.2026 18:17:55] INFO [django.server:249] "GET /appointment/available-slots/?master=2&service=4&date=2026-09-15 HTTP/1.0" 200 144
+[14.09.2026 18:18:18] INFO [django.server:249] "POST /appointment/ HTTP/1.0" 302 0
+[14.09.2026 18:18:18] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[14.09.2026 18:18:20] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 12277
+[14.09.2026 18:26:48] INFO [django.utils.autoreload:265] /app/users/views.py changed, reloading.
+[14.09.2026 18:26:50] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.09.2026 18:26:54] INFO [django.utils.autoreload:265] /app/users/views.py changed, reloading.
+[14.09.2026 18:26:55] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.09.2026 18:26:57] INFO [django.utils.autoreload:265] /app/users/views.py changed, reloading.
+[14.09.2026 18:26:58] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[14.09.2026 18:27:41] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[14.09.2026 18:27:42] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[14.09.2026 18:27:45] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 18685
+[14.09.2026 18:27:54] INFO [django.server:249] "GET /update/2/ HTTP/1.0" 200 10340
+[14.09.2026 18:32:03] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[14.09.2026 18:32:15] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 10393
+[14.09.2026 18:32:17] INFO [django.server:249] "GET /appointment/?service=2 HTTP/1.0" 200 10251
+[14.09.2026 19:16:37] INFO [django.server:249] "GET /admin HTTP/1.0" 301 0
+[14.09.2026 19:16:37] INFO [django.server:249] "GET /admin/ HTTP/1.0" 200 17469
+[14.09.2026 19:16:37] INFO [django.server:249] "GET /api HTTP/1.0" 301 0
+[14.09.2026 19:16:37] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10298
+[14.09.2026 19:16:38] WARNING [django.request:249] Not Found: /favicon.ico
+[14.09.2026 19:16:38] WARNING [django.server:249] "GET /favicon.ico HTTP/1.0" 404 5334
+[14.09.2026 19:22:31] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10298
+[14.09.2026 19:22:34] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[14.09.2026 19:38:26] INFO [django.server:249] "GET /logout/ HTTP/1.0" 302 0
+[14.09.2026 19:38:26] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:38:28] INFO [django.server:249] "GET /register/ HTTP/1.0" 200 6102
+[14.09.2026 19:39:03] INFO [django.server:249] "POST /register/ HTTP/1.0" 302 0
+[14.09.2026 19:39:03] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 5791
+[14.09.2026 19:39:10] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 5338
+[14.09.2026 19:39:17] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:39:21] INFO [django.server:249] "GET /login/ HTTP/1.0" 200 4991
+[14.09.2026 19:39:24] INFO [django.server:249] "POST /login/ HTTP/1.0" 302 0
+[14.09.2026 19:39:24] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 5338
+[14.09.2026 19:39:36] INFO [django.server:249] "GET /login/ HTTP/1.0" 200 4991
+[14.09.2026 19:39:38] INFO [django.server:249] "POST /login/ HTTP/1.0" 302 0
+[14.09.2026 19:39:38] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 5338
+[14.09.2026 19:39:43] INFO [django.server:249] "GET /appointment/ HTTP/1.0" 200 10651
+[14.09.2026 19:39:54] INFO [django.server:249] "GET /appointment/available-slots/?master=1&service=1&date=2026-09-17 HTTP/1.0" 200 108
+[14.09.2026 19:40:17] INFO [django.server:249] "POST /appointment/ HTTP/1.0" 302 0
+[14.09.2026 19:40:17] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:40:31] INFO [django.server:249] "GET /register/ HTTP/1.0" 302 0
+[14.09.2026 19:40:31] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 8671
+[14.09.2026 19:40:39] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 8182
+[14.09.2026 19:40:43] INFO [django.server:249] "GET /login/ HTTP/1.0" 200 4991
+[14.09.2026 19:40:47] INFO [django.server:249] "GET /register/ HTTP/1.0" 302 0
+[14.09.2026 19:40:47] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 8182
+[14.09.2026 19:41:01] INFO [django.server:249] "GET /logout/ HTTP/1.0" 302 0
+[14.09.2026 19:41:04] INFO [django.server:249] "GET /login/ HTTP/1.0" 200 4934
+[14.09.2026 19:41:12] INFO [django.server:249] "POST /login/ HTTP/1.0" 302 0
+[14.09.2026 19:41:12] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 18685
+[14.09.2026 19:41:22] INFO [django.server:249] "GET /register/ HTTP/1.0" 302 0
+[14.09.2026 19:41:22] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 18685
+[14.09.2026 19:41:26] INFO [django.server:249] "GET /register/ HTTP/1.0" 302 0
+[14.09.2026 19:41:26] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 18685
+[14.09.2026 19:41:29] INFO [django.server:249] "GET /login/ HTTP/1.0" 200 4991
+[14.09.2026 19:41:31] INFO [django.server:249] "POST /login/ HTTP/1.0" 302 0
+[14.09.2026 19:41:31] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 8182
+[14.09.2026 19:41:35] INFO [django.server:249] "GET /logout/ HTTP/1.0" 302 0
+[14.09.2026 19:41:38] INFO [django.server:249] "GET /register/ HTTP/1.0" 200 6102
+[14.09.2026 19:41:41] INFO [django.server:249] "GET /login/ HTTP/1.0" 200 4934
+[14.09.2026 19:41:43] INFO [django.server:249] "POST /login/ HTTP/1.0" 302 0
+[14.09.2026 19:41:43] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 8182
+[14.09.2026 19:41:49] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:41:49] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:41:49] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:41:50] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:41:50] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:41:51] INFO [django.server:249] "GET /appointment/ HTTP/1.0" 200 10651
+[14.09.2026 19:41:58] INFO [django.server:249] "GET /register/ HTTP/1.0" 302 0
+[14.09.2026 19:41:58] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 8182
+[14.09.2026 19:42:03] INFO [django.server:249] "GET /login/ HTTP/1.0" 200 4991
+[14.09.2026 19:42:10] INFO [django.server:249] "POST /login/ HTTP/1.0" 302 0
+[14.09.2026 19:42:10] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 18685
+[14.09.2026 19:42:34] INFO [django.server:249] "GET /register/ HTTP/1.0" 302 0
+[14.09.2026 19:42:34] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 18685
+[14.09.2026 19:42:44] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:42:45] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:42:46] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:42:46] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:42:46] INFO [django.server:249] "GET / HTTP/1.0" 200 19066
+[14.09.2026 19:43:11] INFO [django.server:249] "GET /register/ HTTP/1.0" 302 0
+[14.09.2026 19:43:11] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 18685
+[14.09.2026 19:43:16] INFO [django.server:249] "GET /register/ HTTP/1.0" 302 0
+[14.09.2026 19:43:16] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 18685
+[14.09.2026 19:53:09] INFO [django.server:249] "GET /appointment/?service_id=6 HTTP/1.0" 200 10283
+[14.09.2026 20:20:09] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 6603
+[14.09.2026 20:20:11] INFO [django.server:249] "GET /masters/3/ HTTP/1.0" 200 6565
+[14.09.2026 20:20:19] INFO [django.server:249] "GET /appointment/?master=3 HTTP/1.0" 200 10311
+[14.09.2026 20:20:24] INFO [django.server:249] "GET / HTTP/1.0" 200 19123
+[14.09.2026 20:21:50] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 10393
+[14.09.2026 20:43:19] INFO [django.server:249] "GET /appointment/?service_id=6 HTTP/1.0" 200 10283
+[14.09.2026 21:20:14] WARNING [django.request:249] Not Found: /appointment/ class=
+[14.09.2026 21:20:14] WARNING [django.server:249] "GET /appointment/%20class= HTTP/1.0" 404 6049
+[14.09.2026 21:27:53] INFO [django.server:249] "GET / HTTP/1.0" 200 19018
+[14.09.2026 21:46:05] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 6603
+[14.09.2026 21:46:13] INFO [django.server:249] "GET /masters/3/ HTTP/1.0" 200 6565
+[14.09.2026 21:46:19] INFO [django.server:249] "GET /appointment/?master=3 HTTP/1.0" 200 10311
+[14.09.2026 21:46:33] INFO [django.server:249] "GET /appointment/available-slots/?master=3&service=10&date=2026-09-16 HTTP/1.0" 200 198
+[14.09.2026 21:46:54] INFO [django.server:249] "POST /appointment/?master=3 HTTP/1.0" 302 0
+[14.09.2026 21:46:54] INFO [django.server:249] "GET / HTTP/1.0" 200 19507
+[14.09.2026 21:46:58] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 22186
+[14.09.2026 21:47:18] INFO [django.server:249] "POST /cancel/2/ HTTP/1.0" 302 0
+[14.09.2026 21:47:18] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 19116
+[14.09.2026 21:47:21] INFO [django.server:249] "GET / HTTP/1.0" 200 19507
+[14.09.2026 21:49:51] INFO [django.server:249] "GET /admin HTTP/1.0" 301 0
+[14.09.2026 21:49:51] INFO [django.server:249] "GET /admin/ HTTP/1.0" 200 17469
+[14.09.2026 21:49:52] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10298
+[14.09.2026 21:49:55] INFO [django.server:249] "GET /api/services/ HTTP/1.0" 200 11987
+[14.09.2026 21:50:04] INFO [django.server:249] "GET /api/ HTTP/1.0" 200 10298
+[30.09.2026 19:02:18] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:02:46] INFO [django.server:249] "GET / HTTP/1.0" 200 18961
+[30.09.2026 19:02:51] INFO [django.server:249] "GET / HTTP/1.0" 200 18961
+[30.09.2026 19:02:52] INFO [django.server:249] "GET / HTTP/1.0" 200 18961
+[30.09.2026 19:02:52] INFO [django.server:249] "GET / HTTP/1.0" 200 18961
+[30.09.2026 19:02:53] INFO [django.server:249] "GET / HTTP/1.0" 200 18961
+[30.09.2026 19:02:53] INFO [django.server:249] "GET / HTTP/1.0" 200 18961
+[30.09.2026 19:02:54] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 10336
+[30.09.2026 19:02:57] INFO [django.server:249] "GET /appointment/?service=3 HTTP/1.0" 200 10194
+[30.09.2026 19:03:02] INFO [django.server:249] "GET /appointment/available-slots/?master=1&service=3&date=2026-10-01 HTTP/1.0" 200 126
+[30.09.2026 19:03:15] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 108, in appointment_create
+    if form.is_valid():
+       ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/forms/forms.py", line 206, in is_valid
+    return self.is_bound and not self.errors
+                                 ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/forms/forms.py", line 201, in errors
+    self.full_clean()
+  File "/usr/local/lib/python3.12/site-packages/django/forms/forms.py", line 338, in full_clean
+    self._clean_form()
+  File "/usr/local/lib/python3.12/site-packages/django/forms/forms.py", line 354, in _clean_form
+    cleaned_data = self.clean()
+                   ^^^^^^^^^^^^
+  File "/app/appoinments/forms.py", line 142, in clean
+    for app in existing_appointments:
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 847, in as_sql
+    raise TransactionManagementError(
+django.db.transaction.TransactionManagementError: select_for_update cannot be used outside of a transaction.
+[30.09.2026 19:03:15] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 116503
+[30.09.2026 19:03:16] WARNING [django.request:249] Not Found: /favicon.ico
+[30.09.2026 19:03:16] WARNING [django.server:249] "GET /favicon.ico HTTP/1.0" 404 5334
+[30.09.2026 19:11:18] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[30.09.2026 19:11:19] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:11:22] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[30.09.2026 19:11:24] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:11:30] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[30.09.2026 19:11:30] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:11:33] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[30.09.2026 19:11:34] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:13:16] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[30.09.2026 19:13:18] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:13:59] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:13:59] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:00] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:00] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:00] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:00] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:01] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:01] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:01] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:01] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:01] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:01] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:02] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:02] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:02] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:02] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:11] INFO [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 200 10672
+[30.09.2026 19:14:11] INFO [django.server:249] "GET /appointment/available-slots/?master=1&service=3&date=2026-10-01 HTTP/1.0" 200 126
+[30.09.2026 19:14:20] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:20] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79422
+[30.09.2026 19:17:15] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[30.09.2026 19:17:16] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:17:41] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 131, in appointment_create
+    send_appointment_notifications_task.delay(
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() takes 6 positional arguments but 7 were given
+[30.09.2026 19:17:41] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 77935
+[30.09.2026 19:17:42] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 131, in appointment_create
+    send_appointment_notifications_task.delay(
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() takes 6 positional arguments but 7 were given
+[30.09.2026 19:17:42] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 77935
+[30.09.2026 19:17:56] INFO [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 200 10675
+[30.09.2026 19:17:56] INFO [django.server:249] "GET /appointment/available-slots/?master=1&service=3&date=2026-10-01 HTTP/1.0" 200 126
+[30.09.2026 19:18:03] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 131, in appointment_create
+    send_appointment_notifications_task.delay(
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() takes 6 positional arguments but 7 were given
+[30.09.2026 19:18:03] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 77935
+[30.09.2026 19:20:30] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[30.09.2026 19:20:30] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:20:44] INFO [django.server:249] "GET /appointment/available-slots/?master=3&service=3&date=2026-10-01 HTTP/1.0" 200 117
+[30.09.2026 19:20:46] INFO [django.server:249] "GET /appointment/available-slots/?master=3&service=1&date=2026-10-01 HTTP/1.0" 200 99
+[30.09.2026 19:20:48] INFO [django.server:249] "GET /appointment/available-slots/?master=1&service=1&date=2026-10-01 HTTP/1.0" 200 108
+[30.09.2026 19:20:50] INFO [django.server:249] "GET /appointment/available-slots/?master=1&service=2&date=2026-10-01 HTTP/1.0" 200 162
+[30.09.2026 19:20:52] INFO [django.server:249] "GET /appointment/available-slots/?master=3&service=2&date=2026-10-01 HTTP/1.0" 200 144
+[30.09.2026 19:20:54] INFO [django.server:249] "GET /appointment/available-slots/?master=3&service=1&date=2026-10-01 HTTP/1.0" 200 99
+[30.09.2026 19:20:58] INFO [django.server:249] "GET /appointment/available-slots/?master=3&service=1&date=2026-10-02 HTTP/1.0" 200 99
+[30.09.2026 19:21:09] INFO [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 200 10811
+[30.09.2026 19:21:12] INFO [django.server:249] "GET /appointment/available-slots/?master=3&service=9&date=2026-10-02 HTTP/1.0" 200 144
+[30.09.2026 19:21:17] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 78, in appointment_create
+    send_appointment_notifications_task.delay(
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:21:17] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 78460
+[30.09.2026 19:23:08] INFO [django.utils.autoreload:265] /app/appoinments/views.py changed, reloading.
+[30.09.2026 19:23:09] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:24:33] INFO [django.server:249] "GET /appointment/available-slots/?master=3&service=10&date=2026-10-02 HTTP/1.0" 200 198
+[30.09.2026 19:24:42] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 79, in appointment_create
+    send_appointment_notifications_task.apply_async(
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:24:42] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 73553
+[30.09.2026 19:28:16] INFO [django.utils.autoreload:265] /app/appoinments/tasks.py changed, reloading.
+[30.09.2026 19:28:17] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:28:19] INFO [django.utils.autoreload:265] /app/appoinments/tasks.py changed, reloading.
+[30.09.2026 19:28:20] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:29:46] INFO [django.server:249] "GET /appointment/available-slots/?master=3&service=10&date=2026-10-01 HTTP/1.0" 200 198
+[30.09.2026 19:30:04] INFO [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 302 0
+[30.09.2026 19:30:04] INFO [django.server:249] "GET / HTTP/1.0" 200 19450
+[30.09.2026 19:30:21] INFO [django.server:249] "GET /login/ HTTP/1.0" 200 4934
+[30.09.2026 19:30:24] INFO [django.server:249] "POST /login/ HTTP/1.0" 302 0
+[30.09.2026 19:30:24] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 6811
+[30.09.2026 19:30:33] INFO [django.server:249] "GET / HTTP/1.0" 200 19450
+[30.09.2026 19:30:39] INFO [django.server:249] "GET /login/ HTTP/1.0" 200 4991
+[30.09.2026 19:30:42] INFO [django.server:249] "GET /profile/ HTTP/1.0" 200 6811
+[30.09.2026 19:36:27] INFO [django.server:249] "GET / HTTP/1.0" 200 19450
+[30.09.2026 19:36:27] INFO [django.server:249] "GET / HTTP/1.0" 200 19450
+[30.09.2026 19:36:28] INFO [django.server:249] "GET / HTTP/1.0" 200 19450
+[30.09.2026 19:36:28] INFO [django.server:249] "GET / HTTP/1.0" 200 19450
+[30.09.2026 19:36:28] INFO [django.server:249] "GET / HTTP/1.0" 200 19450
+[30.09.2026 19:36:28] INFO [django.server:249] "GET / HTTP/1.0" 200 19450
+[30.09.2026 19:36:29] INFO [django.server:249] "GET / HTTP/1.0" 200 19450
+[30.09.2026 19:37:41] INFO [django.utils.autoreload:265] /app/core/views.py changed, reloading.
+[30.09.2026 19:37:42] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:37:48] INFO [django.utils.autoreload:265] /app/core/views.py changed, reloading.
+[30.09.2026 19:37:48] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:37:50] INFO [django.utils.autoreload:265] /app/core/views.py changed, reloading.
+[30.09.2026 19:37:51] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:37:53] INFO [django.utils.autoreload:265] /app/core/views.py changed, reloading.
+[30.09.2026 19:37:54] INFO [django.utils.autoreload:681] Watching for file changes with StatReloader
+[30.09.2026 19:38:04] INFO [django.server:249] "GET / HTTP/1.0" 200 19018
+[30.09.2026 19:38:09] INFO [django.server:249] "GET /services/ HTTP/1.0" 200 10393
+[30.09.2026 19:38:10] INFO [django.server:249] "GET /masters/ HTTP/1.0" 200 6603
+[30.09.2026 19:38:13] INFO [django.server:249] "GET /masters/3/ HTTP/1.0" 200 6565
+[30.09.2026 19:38:21] INFO [django.server:249] "GET / HTTP/1.0" 200 19018
+[30.09.2026 19:38:26] INFO [django.server:249] "GET / HTTP/1.0" 200 19018
+[30.09.2026 19:38:27] INFO [django.server:249] "GET / HTTP/1.0" 200 19018
+[30.09.2026 19:38:27] INFO [django.server:249] "GET / HTTP/1.0" 200 19018
+[30.09.2026 19:38:27] INFO [django.server:249] "GET / HTTP/1.0" 200 19018

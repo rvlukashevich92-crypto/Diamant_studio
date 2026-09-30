@@ -1,13 +1,20 @@
 from django.shortcuts import render
+from django.core.cache import cache
 from services.models import Service
 from masters.models import Master
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import cache_page
 
-@cache_page(900)
 def index(request):
-    services = Service.objects.all()
-    masters = Master.objects.all()
+    # КОММЕРЧЕСКИЙ ФИКС: Кэшируем данные из базы, но не саму HTML-страницу
+    services = cache.get('homepage_services')
+    if not services:
+        services = Service.objects.all()
+        cache.set('homepage_services', services, 900)
+
+    masters = cache.get('homepage_masters')
+    if not masters:
+        # Рекомендуется добавить select_related или prefetch_related, если у мастера есть связи
+        masters = Master.objects.filter(is_active=True)
+        cache.set('homepage_masters', masters, 900)
 
     return render( 
         request,
@@ -17,5 +24,4 @@ def index(request):
             "masters": masters,
         },
     )
-
 # Create your views here.

@@ -2408,3 +2408,277 @@ Traceback (most recent call last):
     raise ImproperlyConfigured(msg % self.view_name)
 django.core.exceptions.ImproperlyConfigured: Could not resolve URL for hyperlinked relationship using view name "api-master-list". You may have failed to include the related model in your API, or incorrectly configured the `lookup_field` attribute on this field.
 [13.09.2026 20:52:04] ERROR [django.server:249] "GET /api/appointments/ HTTP/1.0" 500 154226
+[30.09.2026 19:03:15] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 108, in appointment_create
+    if form.is_valid():
+       ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/forms/forms.py", line 206, in is_valid
+    return self.is_bound and not self.errors
+                                 ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/forms/forms.py", line 201, in errors
+    self.full_clean()
+  File "/usr/local/lib/python3.12/site-packages/django/forms/forms.py", line 338, in full_clean
+    self._clean_form()
+  File "/usr/local/lib/python3.12/site-packages/django/forms/forms.py", line 354, in _clean_form
+    cleaned_data = self.clean()
+                   ^^^^^^^^^^^^
+  File "/app/appoinments/forms.py", line 142, in clean
+    for app in existing_appointments:
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 847, in as_sql
+    raise TransactionManagementError(
+django.db.transaction.TransactionManagementError: select_for_update cannot be used outside of a transaction.
+[30.09.2026 19:03:15] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 116503
+[30.09.2026 19:13:59] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:13:59] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:00] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:00] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:00] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:00] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:01] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:01] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:01] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:01] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:01] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:01] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:02] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:02] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:02] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:02] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79420
+[30.09.2026 19:14:20] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 146, in appointment_create
+    send_appointment_notifications_task.delay(text_message=text)
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:14:20] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 79422
+[30.09.2026 19:17:41] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 131, in appointment_create
+    send_appointment_notifications_task.delay(
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() takes 6 positional arguments but 7 were given
+[30.09.2026 19:17:41] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 77935
+[30.09.2026 19:17:42] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 131, in appointment_create
+    send_appointment_notifications_task.delay(
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() takes 6 positional arguments but 7 were given
+[30.09.2026 19:17:42] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 77935
+[30.09.2026 19:18:03] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 131, in appointment_create
+    send_appointment_notifications_task.delay(
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() takes 6 positional arguments but 7 were given
+[30.09.2026 19:18:03] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 77935
+[30.09.2026 19:21:17] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 78, in appointment_create
+    send_appointment_notifications_task.delay(
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 463, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:21:17] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 78460
+[30.09.2026 19:24:42] ERROR [django.request:249] Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/appoinments/views.py", line 79, in appointment_create
+    send_appointment_notifications_task.apply_async(
+  File "/usr/local/lib/python3.12/site-packages/celery/app/task.py", line 592, in apply_async
+    check_arguments(*(args or ()), **(kwargs or {}))
+TypeError: send_appointment_notifications_task() got multiple values for argument 'text_message'
+[30.09.2026 19:24:42] ERROR [django.server:249] "POST /appointment/?service=3 HTTP/1.0" 500 73553

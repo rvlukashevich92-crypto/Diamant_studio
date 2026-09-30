@@ -8,6 +8,10 @@ class Application(models.Model):
         verbose_name_plural = "Записи"
         ordering = ["appointment_date", "appointment_time"]
 
+        indexes = [
+                    models.Index(fields=['appointment_date']),
+                ]
+
 
         constraints = [
             models.UniqueConstraint(
@@ -41,10 +45,9 @@ class Application(models.Model):
 
   
     appointment_date = models.DateField()
-    class Meta:
-        indexes = [
-            models.Index(fields=['appointment_date']),
-        ]
+    
+    
+        
     appointment_time = models.TimeField()
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -57,6 +60,7 @@ class Application(models.Model):
     comment = models.TextField(blank=True)
     client_name = models.CharField(max_length=100)
     client_phone = models.CharField(max_length=20)
+    client_telegram_chat_id = models.BigIntegerField(blank=True, null=True, db_index=True)
 
     def __str__(self):
         # Если пользователь есть, берем username. Если нет — имя клиента из формы.
