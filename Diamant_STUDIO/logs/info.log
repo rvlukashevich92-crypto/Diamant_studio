@@ -3446,3 +3446,5 @@ TypeError: send_appointment_notifications_task() got multiple values for argumen
 [30.09.2026 19:38:27] INFO [django.server:249] "GET / HTTP/1.0" 200 19018
 [30.09.2026 19:38:27] INFO [django.server:249] "GET / HTTP/1.0" 200 19018
 [30.09.2026 19:38:27] INFO [django.server:249] "GET / HTTP/1.0" 200 19018
+[30.09.2026 19:49:02] INFO [django.server:249] "GET / HTTP/1.0" 200 19018
+[30.09.2026 19:49:08] INFO [django.server:249] "GET /masters/3/ HTTP/1.0" 200 6565
